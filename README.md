@@ -23,9 +23,13 @@
 
 翻译映射保存在 `WinUIGallery/Localization/`，语言选择逻辑位于 `WinUIGallery/Helpers/LocalizationHelper.cs` 和设置页代码中。原始示例与上游代码结构仍在同一项目内。
 
-## 快速开始：构建本版本
+## 下载并运行
 
-这是 Windows 桌面应用源码仓库，目前没有在此仓库发布可直接下载的安装包。
+首个 x64 免安装版本已发布：[下载 WinUI-Gallery-zh-win-x64.zip](https://github.com/ZiChen-Whisper/WinUI-Gallery-zh/releases/latest/download/WinUI-Gallery-zh-win-x64.zip)。解压后运行 `WinUIGallery.exe`。程序默认显示简体中文；可在“设置 → 显示语言”切换到 English，重启后生效。
+
+该压缩包是自包含构建，不需要另行安装 .NET 或 Windows App SDK。当前二进制仅面向 Windows x64；它没有代码签名，Windows 可能显示未知发布者提示。已在 Windows 11 x64（OS build 26100）完成构建和启动检查，其他系统版本和设备尚未验证。本项目是社区汉化版，不是微软官方发行版。
+
+### 从源码构建
 
 ```powershell
 git clone https://github.com/ZiChen-Whisper/WinUI-Gallery-zh.git
@@ -38,7 +42,7 @@ cd WinUI-Gallery-zh
 
 ### 当前验证记录
 
-此前在本机 `Debug-Unpackaged` x64 配置成功构建，编译错误为 0；另有上游已有的 2 条可空性警告。中英文切换以及 Color、ComboBox 等代表性页面做过手动检查。最近加入的主页横幅文案已再次构建，但该次改动的实机显示尚未完成复核；此前工作未运行自动化测试。其他 Windows 版本、配置和设备上的结果尚未验证。
+`Release-Unpackaged` x64 构建成功；从发布 ZIP 解压后启动，应用进程正常响应并创建主窗口。构建过程中有上游可空性和 XAML 裁剪兼容性警告，未报告编译错误。中英文切换以及 Color、ComboBox 等代表性页面此前做过手动检查；本次未逐一复核所有页面，也未运行自动化测试。其他 Windows 版本和设备尚未验证。
 
 ## 上游 README 中文翻译
 
