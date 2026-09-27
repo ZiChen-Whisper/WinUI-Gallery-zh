@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -18,7 +19,7 @@ public sealed partial class RepeatButtonPage : Page
     private void RepeatButton_Click(object sender, RoutedEventArgs e)
     {
         _clicks += 1;
-        Control1Output.Text = "Number of clicks: " + _clicks;
+        Control1Output.Text = string.Format(LocalizationHelper.Translate("Number of clicks: {0}"), _clicks);
 
         AutomationPeer peer = FrameworkElementAutomationPeer.FromElement(Control1Output) ?? FrameworkElementAutomationPeer.CreatePeerForElement(Control1Output);
         peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);

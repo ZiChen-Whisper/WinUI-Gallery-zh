@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using System.Collections.ObjectModel;
 using Windows.Foundation.Metadata;
+using WinUIGallery.Helpers;
 using ICommand = System.Windows.Input.ICommand;
 
 namespace WinUIGallery.ControlPages;
@@ -79,14 +80,14 @@ public sealed partial class StandardUICommandPage : Page
 
             for (var i = 0; i < 15; i++)
             {
-                collection.Add(new ListItemData { Text = "List item " + i.ToString(), Command = deleteCommand });
+                collection.Add(new ListItemData { Text = string.Format(LocalizationHelper.Translate("List item {0}"), i), Command = deleteCommand });
             }
         }
         else
         {
             for (var i = 0; i < 15; i++)
             {
-                collection.Add(new ListItemData { Text = "List item " + i.ToString(), Command = null });
+                collection.Add(new ListItemData { Text = string.Format(LocalizationHelper.Translate("List item {0}"), i), Command = null });
             }
         }
     }

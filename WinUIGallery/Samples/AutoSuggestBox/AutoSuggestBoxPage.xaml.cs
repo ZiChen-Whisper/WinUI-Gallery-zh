@@ -130,18 +130,20 @@ public sealed partial class AutoSuggestBoxPage : Page
             var splitText = sender.Text.ToLower().Split(" ");
             foreach (var cat in Cats)
             {
+                string localizedCat = LocalizationHelper.Translate(cat);
                 var found = splitText.All((key) =>
                 {
-                    return cat.ToLower().Contains(key);
+                    return cat.Contains(key, StringComparison.CurrentCultureIgnoreCase) ||
+                        localizedCat.Contains(key, StringComparison.CurrentCultureIgnoreCase);
                 });
                 if (found)
                 {
-                    suitableItems.Add(cat);
+                    suitableItems.Add(localizedCat);
                 }
             }
             if (suitableItems.Count == 0)
             {
-                suitableItems.Add("No results found");
+                suitableItems.Add(LocalizationHelper.Translate("No results found"));
             }
             sender.ItemsSource = suitableItems;
         }
@@ -170,7 +172,7 @@ public sealed partial class AutoSuggestBoxPage : Page
             if (suggestions.Count > 0)
                 sender.ItemsSource = suggestions;
             else
-                sender.ItemsSource = new string[] { "No results found" };
+                sender.ItemsSource = new string[] { LocalizationHelper.Translate("No results found") };
         }
     }
 

@@ -5,6 +5,7 @@ using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -17,7 +18,7 @@ public sealed partial class RadioButtonPage : Page
 
     private void RadioButton_Checked(object sender, RoutedEventArgs e)
     {
-        Control1Output.Text = string.Format("You selected {0}", (sender as RadioButton)?.Content.ToString());
+        Control1Output.Text = string.Format(LocalizationHelper.Translate("You selected {0}"), (sender as RadioButton)?.Content.ToString());
     }
 
     private void BackgroundColor_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -15,6 +15,7 @@ using Windows.Foundation.Metadata;
 using Windows.Storage;
 using Windows.Storage.Provider;
 using Windows.Storage.Streams;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -94,11 +95,11 @@ public sealed partial class RichEditBoxPage : Page
             var savePicker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId)
             {
                 SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
-                SuggestedFileName = "New Document"
+                SuggestedFileName = LocalizationHelper.Translate("New Document")
             };
 
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Rich Text", new List<string>() { ".rtf" });
+            savePicker.FileTypeChoices.Add(LocalizationHelper.Translate("Rich Text"), new List<string>() { ".rtf" });
 
             // Show picker
             PickFileResult result = await savePicker.PickSaveFileAsync();
@@ -123,7 +124,7 @@ public sealed partial class RichEditBoxPage : Page
                 if (status != FileUpdateStatus.Complete)
                 {
                     var errorBox = new Windows.UI.Popups.MessageDialog(
-                        $"File {file.Name} couldn't be saved.");
+                        string.Format(LocalizationHelper.Translate("File {0} couldn't be saved."), file.Name));
                     await errorBox.ShowAsync();
                 }
             }

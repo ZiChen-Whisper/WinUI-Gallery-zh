@@ -4,7 +4,9 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
+using System;
 using Windows.Foundation.Metadata;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -23,7 +25,7 @@ public sealed partial class CommandBarFlyoutPage : Page
         }
 
         // Do custom logic
-        SelectedOptionText.Text = "You clicked: " + appBarButton.Label;
+        SelectedOptionText.Text = LocalizationHelper.Translate("You clicked: {0}").Replace("{0}", appBarButton.Label ?? string.Empty, StringComparison.Ordinal);
     }
 
     private void ShowMenu(bool isTransient)

@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -20,7 +21,7 @@ public sealed partial class PasswordBoxPage : Page
             if (string.IsNullOrEmpty(pb.Password) || pb.Password == "Password")
             {
                 Control1Output.Visibility = Visibility.Visible;
-                Control1Output.Text = "'Password' is not allowed.";
+                Control1Output.Text = LocalizationHelper.Translate("'Password' is not allowed.");
                 pb.Password = string.Empty;
             }
             else

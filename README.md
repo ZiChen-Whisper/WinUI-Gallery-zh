@@ -1,103 +1,118 @@
-![WinUI Gallery hero image](./.github/assets/ReadmeHero-dark.png)
+# WinUI 3 Gallery 中文双语版
 
-<h1 align="center">WinUI 3 Gallery</h1>
-<p align="center">Companion app for <a style="text-decoration:none" href="https://docs.microsoft.com/windows/apps/winui">WinUI</a> & <a style="text-decoration:none" href="https://github.com/microsoft/WindowsAppSDK">Windows App SDK</a> APIs</p>
-
-
-This app demonstrates all of the WinUI 3 controls and styles available to make a modern Windows app with the Windows App SDK. It is the interactive companion to the [Fluent Design guidelines](https://docs.microsoft.com/windows/apps/design/basics/) and shows the usage of [WinUI](https://docs.microsoft.com/windows/apps/winui/) through interactive samples, tools and code snippets. 
-
-
+<p align="center"><strong>为 WinUI 3 控件与 Fluent Design 示例补上简体中文说明，同时保留切回英文的入口。</strong></p>
 
 <p align="center">
-  <img src="./.github/assets/Screenshot-light.png" alt="WinUI 3 Gallery" width="800"/>
+  <a href="https://github.com/microsoft/WinUI-Gallery">Microsoft 上游项目</a> ·
+  <a href="https://github.com/ZiChen-Whisper/WinUI-Gallery-zh">本中文双语版</a> ·
+  <a href="LICENSE">MIT License</a>
 </p>
+
+![语言切换流程示意：在设置中选择简体中文或 English，重启后浏览对应语言的导航和示例说明；代码与 API 名称保留原文。](./.github/assets/bilingual-language-flow.svg)
+
+<p align="center"><strong>默认简体中文 · 可切换 English · 选择保存后应用重启生效</strong></p>
+
+本仓库基于微软的 [WinUI 3 Gallery](https://github.com/microsoft/WinUI-Gallery)，面向想用中文学习 WinUI 控件和 Fluent Design 示例的开发者。界面和说明可以用简体中文阅读；切到英文时仍可对照上游术语与原始内容。
+
+## 本版本汉化了什么
+
+- **双语切换**：在应用的“设置 → 显示语言”中选择“中文（简体）”或 English。选择会保存在本机，重启应用后生效；新配置默认使用简体中文。
+- **样例目录**：19 个分类、123 个示例的标题、副标题和说明均有中文；标题保留中英对照，方便查找上游文档和 API。
+- **界面与示例文案**：主页、设置、导航、Color 等页面，以及多个示例页面和交互提示提供中文映射。未收录的文字回退到上游英文。
+- **代码保持可用**：XAML/C# 示例、WinUI 控件名、API 标识符和资源键保留英文，便于复制运行并与微软文档对应。
+
+翻译映射保存在 `WinUIGallery/Localization/`，语言选择逻辑位于 `WinUIGallery/Helpers/LocalizationHelper.cs` 和设置页代码中。原始示例与上游代码结构仍在同一项目内。
+
+## 快速开始：构建本版本
+
+这是 Windows 桌面应用源码仓库，目前没有在此仓库发布可直接下载的安装包。
+
+```powershell
+git clone https://github.com/ZiChen-Whisper/WinUI-Gallery-zh.git
+cd WinUI-Gallery-zh
+```
+
+使用 Visual Studio 2022 或更新版本打开 `WinUIGallery.slnx`，将 `WinUIGallery` 设为启动项目，还原 NuGet 依赖后构建并运行。需要安装 Visual Studio 的 **Windows application development** 工作负载；微软的[环境安装说明](https://learn.microsoft.com/windows/apps/get-started/start-here)列出了所需组件。
+
+本项目沿用上游固定的实验版 Windows App SDK，版本定义在 `standalone.props`。实验 API 可能在未来版本变化或移除；项目将运行时随应用一起部署。上游 README 的构建提示和限制见下方中文译本。
+
+### 当前验证记录
+
+此前在本机 `Debug-Unpackaged` x64 配置成功构建，编译错误为 0；另有上游已有的 2 条可空性警告。中英文切换以及 Color、ComboBox 等代表性页面做过手动检查。最近加入的主页横幅文案已再次构建，但该次改动的实机显示尚未完成复核；此前工作未运行自动化测试。其他 Windows 版本、配置和设备上的结果尚未验证。
+
+## 上游 README 中文翻译
+
+以下内容翻译自微软上游仓库在本版本基础提交 [`7614c008`](https://github.com/microsoft/WinUI-Gallery/blob/7614c0083cc7fe33f5473603bb745a222abaef27/README.md) 中的 README。它保留了上游项目的介绍、资源链接和开发说明；其中的贡献指南、项目看板、商店发布流程及克隆命令指向微软上游仓库。构建本中文双语版请使用上面的仓库地址和步骤。
+
 <p align="center">
-  <a style="text-decoration:none" href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full">
-    <picture>
-      <source media="(prefers-color-scheme: light)" srcset="./.github/assets/StoreBadge-dark.png" width="220" />
-      <img src="./.github/assets/StoreBadge-light.png" width="220" />
-  </picture></a>
+  <img src="./.github/assets/Screenshot-light.png" width="800" alt="微软上游 WinUI 3 Gallery 英文界面截图；这不是本中文双语版的实机截图" />
 </p>
 
-## ⭐ Features
+## WinUI 3 Gallery
 
-- **WinUI controls samples:** each control page shows the markup and codebehind used to create each example.
+WinUI 3 与 Windows App SDK API 的配套示例应用。
 
-- **Use the Microsoft.UI.Xaml (WinUI) library:** the app includes the latest WinUI NuGet package and shows how to use the [WinUI](https://docs.microsoft.com/windows/apps/winui/) controls like NavigationView, SwipeControl, and more.
+此应用展示如何使用 Windows App SDK 构建现代 Windows 应用中提供的 WinUI 3 控件和样式。它是 [Fluent Design 指南](https://docs.microsoft.com/windows/apps/design/basics/)的交互式配套应用，通过交互示例、工具和代码片段演示 [WinUI](https://docs.microsoft.com/windows/apps/winui/) 的用法。
 
-- **Adaptive UI:** in addition to showing how each control responds to different form factors, the app itself is responsive and shows various methods for achieving adaptive UI.
+原版应用可从 [Microsoft Store](https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full) 获取。
 
-- **Design & accessibility guidance**: design and accessibility pages help make the gallery a useful developer companion app. 
+### 功能
 
+- **WinUI 控件示例**：每个控件页面都会展示构成示例的标记语言和代码后台。
+- **使用 Microsoft.UI.Xaml（WinUI）库**：应用包含最新的 WinUI NuGet 包，并演示如何使用 [WinUI](https://docs.microsoft.com/windows/apps/winui/) 控件，例如 NavigationView、SwipeControl 等。
+- **自适应界面**：除了展示控件如何响应不同设备形态，应用本身也支持自适应，并演示了多种实现方式。
+- **设计与无障碍指南**：设计和无障碍页面让 Gallery 成为开发者的实用参考应用。
 
+### 参与上游 WinUI Gallery
 
-## 👏 Contribute to WinUI Gallery
+希望新增示例或改进文档？可以先在微软上游仓库[提交 Issue](https://github.com/microsoft/WinUI-Gallery/issues)讨论，也可以提交 Pull Request。
 
-Any samples or docs improvements you'd like to see? We're always looking for a helping hand. Feel free to file an issue to start the discussion, or even better, create a PR with the change you'd like to see!
+如果还不知道从哪里开始，可以查看标记为 [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) 的待处理事项。也可以在[项目看板](https://github.com/orgs/microsoft/projects/368)了解上游进展。
 
-Check out these [help wanted](https://github.com/microsoft/WinUI-Gallery/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) issues if you don't know where to start.
+### 上游项目的构建说明
 
-You can also learn more about current happenings with WinUI Gallery in the [project board](https://github.com/orgs/microsoft/projects/368).
+#### 1. 准备开发环境
 
-## 🚀 Getting started
+构建 WinUI Gallery 需要 [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) 或更高版本；运行需要 Windows 10 或更高版本。如果你是第一次使用 WinUI 和 Windows App SDK 开发应用，请参阅微软的[安装说明](https://learn.microsoft.com/windows/apps/get-started/start-here)。
 
-Quick start guide to building the WinUI 3 Gallery:
+Visual Studio 所需组件：
 
+- Windows application development（Windows 应用程序开发）
 
-### 1. Set up the environment
+#### 2. 克隆微软上游仓库
 
-> [!NOTE]
-> The WinUI Gallery requires [Visual Studio 2022](https://visualstudio.microsoft.com/vs/) or later to build and Windows 10 or later to execute. If you're building an app with WinUI and Windows App SDK for the first time, follow these [installation instructions](https://learn.microsoft.com/windows/apps/get-started/start-here).
-
-**Required [Visual Studio components](https://learn.microsoft.com/windows/apps/get-started/start-here?tabs=vs-2022-17-10#required-workloads-and-components):**
-- Windows application development
-
-### 2. Clone the Repository
+以下命令保留上游 README 的原地址。如需获取本汉化版，请用上文的 `ZiChen-Whisper/WinUI-Gallery-zh` 地址。
 
 ```powershell
 git clone https://github.com/microsoft/WinUI-Gallery.git
 ```
 
-### 3. Open WinUIGallery.slnx with Visual Studio and build!
+#### 3. 使用 Visual Studio 构建
 
-Ensure that the `WinUIGallery` project is set as the startup project in Visual Studio.
+用 Visual Studio 打开 `WinUIGallery.slnx`，确保 `WinUIGallery` 项目设为启动项目，然后构建。
 
-Gallery uses an experimental Windows App SDK to demonstrate upcoming features.
-Use the normal `Debug` or `Release` configuration; the SDK version is pinned in
-`standalone.props`. The runtime is bundled with the app (self-contained deployment)
-instead of referencing a shared Windows App SDK framework package. Experimental
-APIs can change or be removed before a stable release.
+Gallery 使用实验版 Windows App SDK 展示即将推出的功能。请使用普通的 `Debug` 或 `Release` 配置；SDK 版本固定在 `standalone.props`。运行时随应用一起部署（self-contained），而不是依赖系统中共享的 Windows App SDK 框架包。实验 API 在正式发布前可能会变化或移除。
 
-The **Windowing APIs** page combines stable window creation with experimental
-window sizing examples. Each experimental example has its own label and warning;
-the stable example retains its original APIs.
+**Windowing APIs** 页面同时包含稳定的窗口创建示例和实验性的窗口尺寸示例。每个实验示例都有独立标注和警告；稳定示例仍使用原有 API。
 
-> [!WARNING]
-> Try deleting [`nuget.config`](nuget.config) and building again if you get the following build error:
-> > Assets file 'C:\Users\\...\source\repos\WinUI-Gallery\WinUIGallery\obj\WinUIGallery\project.assets.json' not found. Run a NuGet package restore to generate this file.
->
-> See [issue #1659: Broken repo build](https://github.com/microsoft/WinUI-Gallery/issues/1659).
+> **构建提示：** 上游 README 提到，如果遇到找不到 `WinUIGallery/obj/WinUIGallery/project.assets.json` 的错误，可以尝试删除 `nuget.config` 后重新还原和构建。详情见上游 [Issue #1659：Broken repo build](https://github.com/microsoft/WinUI-Gallery/issues/1659)。这是上游提供的排查提示；修改配置文件前请先阅读该 Issue，并确认问题与当前环境相符。
 
-## ➡️ Further information
+### 更多信息
 
-To learn more about Windows app development, go to the [Windows Dev Center](https://developer.microsoft.com/windows).
+了解 Windows 应用开发，请访问 [Windows Dev Center](https://developer.microsoft.com/windows)。微软上游的维护者可以查看[发布运行手册](https://github.com/microsoft/WinUI-Gallery/blob/main/docs/PublishingNewVersion.md)，了解如何协调 Microsoft Store 发布与 GitHub Release。
 
-Maintainers can follow the [release runbook](docs/PublishingNewVersion.md) to
-coordinate Microsoft Store publishing with a GitHub release.
+相关主题：
 
+- [开始使用 WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)
+- [关于 WinUI](https://aka.ms/windev)
+- [WinUI 仓库](https://github.com/microsoft/microsoft-ui-xaml)
+- [Windows App SDK 仓库](https://github.com/microsoft/WindowsAppSDK)
+- [Windows App SDK 示例](https://github.com/microsoft/WindowsAppSDK-Samples)
 
-### Related topics
+### 上游贡献者
 
+感谢微软 WinUI Gallery 的贡献者。查看[上游贡献者名单](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)。
 
-- [Get started with WinUI](https://learn.microsoft.com/windows/apps/get-started/start-here)  
-- [About WinUI](https://aka.ms/windev)
-- [WinUI repository](https://github.com/microsoft/microsoft-ui-xaml)
-- [WindowsAppSDK repository](https://github.com/microsoft/WindowsAppSDK)
-- [WindowsAppSDK samples](https://github.com/microsoft/WindowsAppSDK-Samples)
+## 许可证与来源
 
-## 🏆 Contributors
-Thanks to our amazing contributors!
-
-[![WinUI 3 Gallery Contributors](https://contrib.rocks/image?repo=microsoft/WinUI-Gallery)](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)
-
-Made with [contrib.rocks](https://contrib.rocks).
+本仓库基于微软 [WinUI-Gallery](https://github.com/microsoft/WinUI-Gallery)，沿用其 [MIT License](LICENSE) 并保留原有版权声明。这里增加的中文翻译和双语显示代码是对上游应用的社区改造；本仓库不是微软发布或维护的官方中文版本。

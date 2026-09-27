@@ -154,6 +154,11 @@ public sealed partial class MainWindow : Window
         MinHeight = 500;
     }
 
+    public void ApplyLocalizedWindowTitle()
+    {
+        Title = LocalizationHelper.Translate(Title);
+    }
+
     private void OnPaneDisplayModeChanged(NavigationView sender, NavigationViewDisplayModeChangedEventArgs args)
     {
         if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Top)
@@ -251,7 +256,7 @@ public sealed partial class MainWindow : Window
         {
             var itemGroup = new NavigationViewItem() { Content = group.Title, Tag = group.UniqueId, DataContext = group, Icon = GetIcon(group.IconGlyph) };
 
-            var groupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {group.Title} samples", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
+            var groupMenuFlyoutItem = new MenuFlyoutItem() { Text = LocalizationHelper.Translate($"Copy Link to {group.Title} samples"), Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = group };
             groupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
             itemGroup.ContextFlyout = new MenuFlyout() { Items = { groupMenuFlyoutItem } };
 
@@ -270,7 +275,7 @@ public sealed partial class MainWindow : Window
                     Tag = item.UniqueId,
                 };
 
-                var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = $"Copy Link to {item.Title} sample", Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
+                var itemInGroupMenuFlyoutItem = new MenuFlyoutItem() { Text = LocalizationHelper.Translate($"Copy Link to {item.Title} sample"), Icon = new FontIcon() { Glyph = "\uE8C8" }, Tag = item };
                 itemInGroupMenuFlyoutItem.Click += this.OnMenuFlyoutItemClick;
                 itemInGroup.ContextFlyout = new MenuFlyout() { Items = { itemInGroupMenuFlyoutItem } };
 
@@ -442,6 +447,17 @@ public sealed partial class MainWindow : Window
     private void OnRootFrameNavigated(object sender, NavigationEventArgs e)
     {
         TestContentLoadedCheckBox.IsChecked = true;
+        if (e.Content is FrameworkElement page)
+        {
+            LocalizationHelper.Apply(page);
+            RoutedEventHandler? applyOnLoaded = null;
+            applyOnLoaded = (_, _) =>
+            {
+                page.Loaded -= applyOnLoaded;
+                LocalizationHelper.Apply(page);
+            };
+            page.Loaded += applyOnLoaded;
+        }
     }
 
     private void OnRootFrameNavigating(object sender, NavigatingCancelEventArgs e)

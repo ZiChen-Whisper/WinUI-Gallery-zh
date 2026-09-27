@@ -37,10 +37,10 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         {
             var dialog = new ContentDialog()
             {
-                Title = "Camera access denied",
-                Content = "Please enable camera access in the privacy settings.",
-                PrimaryButtonText = "Privacy Settings",
-                CloseButtonText = "Cancel",
+                Title = LocalizationHelper.Translate("Camera access denied"),
+                Content = LocalizationHelper.Translate("Please enable camera access in the privacy settings."),
+                PrimaryButtonText = LocalizationHelper.Translate("Privacy Settings"),
+                CloseButtonText = LocalizationHelper.Translate("Cancel"),
                 DefaultButton = ContentDialogButton.Primary,
                 XamlRoot = this.XamlRoot,
             };
@@ -54,9 +54,9 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         {
             var dialog = new ContentDialog()
             {
-                Title = "Error",
+                Title = LocalizationHelper.Translate("Error"),
                 Content = ex.Message,
-                CloseButtonText = "OK",
+                CloseButtonText = LocalizationHelper.Translate("OK"),
                 XamlRoot = this.XamlRoot,
             };
 
@@ -90,7 +90,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         var groups = await MediaFrameSourceGroup.FindAllAsync();
         if (groups.Count == 0)
         {
-            frameSourceName.Text = "No camera devices found.";
+            frameSourceName.Text = LocalizationHelper.Translate("No camera devices found.");
             return;
         }
         cameraSourceComboBox.ItemsSource = groups;
@@ -107,7 +107,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
         }
 
         mediaFrameSourceGroup = sourceGroup;
-        frameSourceName.Text = "Viewing: " + mediaFrameSourceGroup.DisplayName;
+        frameSourceName.Text = LocalizationHelper.Translate("Viewing: {0}").Replace("{0}", mediaFrameSourceGroup.DisplayName, StringComparison.Ordinal);
         mediaCapture = new MediaCapture();
         var mediaCaptureInitializationSettings = new MediaCaptureInitializationSettings()
         {
@@ -133,7 +133,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
             }
             catch (Exception ex)
             {
-                frameSourceName.Text = "Error: " + ex.Message;
+                frameSourceName.Text = LocalizationHelper.Translate("Error: {0}").Replace("{0}", ex.Message, StringComparison.Ordinal);
             }
         }
     }
@@ -188,7 +188,7 @@ public sealed partial class CaptureElementPreviewPage : Page, INotifyPropertyCha
 
         capturedText.Visibility = Visibility.Visible;
 
-        UIHelper.AnnounceActionForAccessibility(captureButton, "Photo successfully captured.", "CameraPreviewSampleCaptureNotificationId");
+        UIHelper.AnnounceActionForAccessibility(captureButton, LocalizationHelper.Translate("Photo successfully captured."), "CameraPreviewSampleCaptureNotificationId");
     }
 }
 

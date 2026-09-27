@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -30,7 +31,8 @@ public sealed partial class MenuFlyoutPage : Page
                     //SortByDistance();
                     break;
             }
-            Control1Output.Text = "Sort by: " + sortOption;
+            Control1Output.Text = LocalizationHelper.Translate(
+                $"Sort by: {LocalizationHelper.Translate(sortOption ?? string.Empty)}");
         }
     }
 
@@ -43,7 +45,8 @@ public sealed partial class MenuFlyoutPage : Page
     {
         if (sender is MenuFlyoutItem selectedItem)
         {
-            Control3bOutput.Text = "Clicked: " + selectedItem.Text;
+            Control3bOutput.Text = LocalizationHelper.Translate(
+                $"Clicked: {LocalizationHelper.Translate(selectedItem.Text)}");
         }
     }
 }

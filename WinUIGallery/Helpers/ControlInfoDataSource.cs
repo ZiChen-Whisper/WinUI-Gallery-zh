@@ -98,6 +98,8 @@ public sealed partial class ControlInfoDataSource
             return;
         }
 
+        LocalizationHelper.ApplyCatalogTranslations(controlInfoDataGroup);
+
         lock (_lock)
         {
             controlInfoDataGroup.Groups.SelectMany(g => g.Items).ToList().ForEach(item =>

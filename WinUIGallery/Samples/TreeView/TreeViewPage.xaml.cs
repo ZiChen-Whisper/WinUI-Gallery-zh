@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -23,19 +24,19 @@ public sealed partial class TreeViewPage : Page
 
     private void InitializeSampleTreeView(TreeView sampleTreeView)
     {
-        TreeViewNode workFolder = new TreeViewNode() { Content = "Work Documents" };
+        TreeViewNode workFolder = new TreeViewNode() { Content = LocalizationHelper.Translate("Work Documents") };
         workFolder.IsExpanded = true;
 
-        workFolder.Children.Add(new TreeViewNode() { Content = "XYZ Functional Spec" });
-        workFolder.Children.Add(new TreeViewNode() { Content = "Feature Schedule" });
+        workFolder.Children.Add(new TreeViewNode() { Content = LocalizationHelper.Translate("XYZ Functional Spec") });
+        workFolder.Children.Add(new TreeViewNode() { Content = LocalizationHelper.Translate("Feature Schedule") });
 
-        TreeViewNode remodelFolder = new TreeViewNode() { Content = "Home Remodel" };
+        TreeViewNode remodelFolder = new TreeViewNode() { Content = LocalizationHelper.Translate("Home Remodel") };
         remodelFolder.IsExpanded = true;
 
-        remodelFolder.Children.Add(new TreeViewNode() { Content = "Contractor Contact Info" });
-        remodelFolder.Children.Add(new TreeViewNode() { Content = "Paint Color Scheme" });
+        remodelFolder.Children.Add(new TreeViewNode() { Content = LocalizationHelper.Translate("Contractor Contact Info") });
+        remodelFolder.Children.Add(new TreeViewNode() { Content = LocalizationHelper.Translate("Paint Color Scheme") });
 
-        TreeViewNode personalFolder = new TreeViewNode() { Content = "Personal Documents" };
+        TreeViewNode personalFolder = new TreeViewNode() { Content = LocalizationHelper.Translate("Personal Documents") };
         personalFolder.IsExpanded = true;
         personalFolder.Children.Add(remodelFolder);
 

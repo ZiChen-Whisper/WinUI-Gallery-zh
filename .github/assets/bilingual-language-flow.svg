@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">WinUI 3 Gallery 中文双语版的语言切换方式</title>
+  <desc id="desc">在设置中选择简体中文或 English，保存后应用重启，并按所选语言显示导航和示例说明。XAML、C# 示例与 WinUI API 名称保留原文。</desc>
+  <rect width="1200" height="360" rx="24" fill="#F3F6F9"/>
+
+  <text x="56" y="46" font-family="Segoe UI, PingFang SC, Microsoft YaHei UI, sans-serif" font-size="18" font-weight="700" letter-spacing="1.2" fill="#526273">WINUI 3 GALLERY  /  简体中文 + ENGLISH</text>
+  <text x="56" y="91" font-family="Segoe UI, PingFang SC, Microsoft YaHei UI, sans-serif" font-size="34" font-weight="700" fill="#172B4D">选择界面语言，继续读懂 WinUI 示例</text>
+
+  <g font-family="Segoe UI, PingFang SC, Microsoft YaHei UI, sans-serif">
+    <rect x="48" y="122" width="340" height="150" rx="16" fill="#FFFFFF" stroke="#CAD5E0" stroke-width="2"/>
+    <text x="76" y="158" font-size="20" font-weight="650" fill="#526273">01  /  设置</text>
+    <text x="76" y="204" font-size="30" font-weight="700" fill="#172B4D">选择显示语言</text>
+    <text x="76" y="242" font-size="22" fill="#334155">中文（简体）  /  English</text>
+
+    <rect x="430" y="122" width="340" height="150" rx="16" fill="#FFFFFF" stroke="#CAD5E0" stroke-width="2"/>
+    <text x="458" y="158" font-size="20" font-weight="650" fill="#526273">02  /  保存设置</text>
+    <text x="458" y="204" font-size="30" font-weight="700" fill="#172B4D">应用重启</text>
+    <text x="458" y="242" font-size="22" fill="#334155">下次启动载入所选语言</text>
+
+    <rect x="812" y="122" width="340" height="150" rx="16" fill="#FFFFFF" stroke="#CAD5E0" stroke-width="2"/>
+    <text x="840" y="158" font-size="20" font-weight="650" fill="#526273">03  /  浏览示例</text>
+    <text x="840" y="204" font-size="28" font-weight="700" fill="#172B4D">中文说明 + 原文代码</text>
+    <text x="840" y="242" font-size="19" fill="#334155">导航、标题和描述随语言切换</text>
+  </g>
+
+  <g fill="none" stroke="#0067C0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M398 197h22m-8-8 8 8-8 8"/>
+    <path d="M780 197h22m-8-8 8 8-8 8"/>
+  </g>
+
+  <text x="600" y="323" text-anchor="middle" font-family="Segoe UI, PingFang SC, Microsoft YaHei UI, sans-serif" font-size="19" fill="#526273">XAML / C# 示例、资源键与 WinUI API 标识保留英文原文</text>
+</svg>

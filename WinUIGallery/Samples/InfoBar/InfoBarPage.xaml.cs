@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -52,12 +53,12 @@ public sealed partial class InfoBarPage : Page
         if (MessageComboBox.SelectedIndex == 0) // short
         {
             string shortMessage = "A short essential app message.";
-            TestInfoBar2.Message = shortMessage;
+            TestInfoBar2.Message = LocalizationHelper.Translate(shortMessage);
             DisplayMessage.Value = shortMessage;
         }
         else if (MessageComboBox.SelectedIndex == 1) //long
         {
-            TestInfoBar2.Message = @"A long essential app message for your users to be informed of, acknowledge, or take action on. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus dolor vitae justo rutrum, ut lobortis nibh mattis. Aenean id elit commodo, semper felis nec.";
+            TestInfoBar2.Message = LocalizationHelper.Translate(@"A long essential app message for your users to be informed of, acknowledge, or take action on. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dapibus dolor vitae justo rutrum, ut lobortis nibh mattis. Aenean id elit commodo, semper felis nec.");
             DisplayMessage.Value = "A long essential app message...";
         }
     }
@@ -74,7 +75,7 @@ public sealed partial class InfoBarPage : Page
         else if (ActionButtonComboBox.SelectedIndex == 1) // button
         {
             var button = new Button();
-            button.Content = "Action";
+            button.Content = LocalizationHelper.Translate("Action");
             TestInfoBar2.ActionButton = button;
             DisplayButton.Value = @"<InfoBar.ActionButton>
             <Button Content=""Action"" Click=""InfoBarButton_Click"" />
@@ -85,7 +86,7 @@ public sealed partial class InfoBarPage : Page
         {
             var link = new HyperlinkButton();
             link.NavigateUri = new Uri("http://www.microsoft.com/");
-            link.Content = "Informational link";
+            link.Content = LocalizationHelper.Translate("Informational link");
             TestInfoBar2.ActionButton = link;
             DisplayButton.Value = @"<InfoBar.ActionButton>
             <HyperlinkButton Content=""Informational link"" NavigateUri=""https://www.example.com"" />

@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.AnimatedVisuals;
 using Microsoft.UI.Xaml.Input;
 using System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -38,7 +39,9 @@ public sealed partial class AnimatedIconPage : Page
             case "AnimatedGlobalNavigationButtonVisualSource": return new AnimatedGlobalNavigationButtonVisualSource();
             case "AnimatedSettingsVisualSource": return new AnimatedSettingsVisualSource();
             // Throw an exception if the name is not recognized.
-            default: throw new InvalidOperationException($"{name} is not a valid animated visual.");
+            default: throw new InvalidOperationException(
+                LocalizationHelper.Translate("{0} is not a valid animated visual.")
+                    .Replace("{0}", name, StringComparison.Ordinal));
         }
     }
 }

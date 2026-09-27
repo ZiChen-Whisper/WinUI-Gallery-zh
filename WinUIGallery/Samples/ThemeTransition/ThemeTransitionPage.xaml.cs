@@ -21,7 +21,7 @@ public sealed partial class ThemeTransitionPage : Page
 
         for (int i = 0; i < _itemCount; i++)
         {
-            AddRemoveListView.Items.Add(new ListViewItem() { Content = "Item " + i });
+            AddRemoveListView.Items.Add(new ListViewItem() { Content = string.Format(LocalizationHelper.Translate("Item {0}"), i) });
         }
 
         AddItemsToContentListView();
@@ -42,7 +42,7 @@ public sealed partial class ThemeTransitionPage : Page
     private void ContentRefreshButton_Click(object sender, RoutedEventArgs e)
     {
         AddItemsToContentListView(true);
-        UIHelper.AnnounceActionForAccessibility((UIElement)sender, "Data refreshed.", "ContentRefreshNotificationId");
+        UIHelper.AnnounceActionForAccessibility((UIElement)sender, LocalizationHelper.Translate("Data refreshed."), "ContentRefreshNotificationId");
     }
 
     private void AddItemsToContentListView(bool ShowDifferentContent = false)
@@ -50,7 +50,9 @@ public sealed partial class ThemeTransitionPage : Page
         var items = new List<string>();
         for (int i = 0; i < 5; i++)
         {
-            items.Add(ShowDifferentContent ? "Updated content " + i : "Item " + i);
+            items.Add(ShowDifferentContent
+                ? string.Format(LocalizationHelper.Translate("Updated content {0}"), i)
+                : string.Format(LocalizationHelper.Translate("Item {0}"), i));
         }
 
         ContentList.ItemsSource = items;
@@ -58,9 +60,9 @@ public sealed partial class ThemeTransitionPage : Page
 
     private void AddButton_Click(object sender, RoutedEventArgs e)
     {
-        AddRemoveListView.Items.Add(new ListViewItem() { Content = "New Item " + _itemCount.ToString() });
+            AddRemoveListView.Items.Add(new ListViewItem() { Content = string.Format(LocalizationHelper.Translate("New Item {0}"), _itemCount) });
         _itemCount++;
-        UIHelper.AnnounceActionForAccessibility((UIElement)sender, "Item added.", "AddDeleteItemAddedNotificationId");
+        UIHelper.AnnounceActionForAccessibility((UIElement)sender, LocalizationHelper.Translate("Item added."), "AddDeleteItemAddedNotificationId");
     }
 
     private void DeleteButton_Click(object sender, RoutedEventArgs e)
@@ -68,14 +70,16 @@ public sealed partial class ThemeTransitionPage : Page
         if (AddRemoveListView.Items.Count > 0)
         {
             AddRemoveListView.Items.RemoveAt(0);
-            UIHelper.AnnounceActionForAccessibility((UIElement)sender, "Item deleted.", "AddDeleteItemDeletedNotificationId");
+            UIHelper.AnnounceActionForAccessibility((UIElement)sender, LocalizationHelper.Translate("Item deleted."), "AddDeleteItemDeletedNotificationId");
         }
     }
 
     private void RepositionButton_Click(object sender, RoutedEventArgs e)
     {
         MiddleElement.Visibility = MiddleElement.Visibility == Visibility.Visible ? Visibility.Collapsed : Visibility.Visible;
-        string announcement = MiddleElement.Visibility == Visibility.Visible ? "Element restored." : "Element repositioned.";
+        string announcement = MiddleElement.Visibility == Visibility.Visible
+            ? LocalizationHelper.Translate("Element restored.")
+            : LocalizationHelper.Translate("Element repositioned.");
         UIHelper.AnnounceActionForAccessibility((UIElement)sender, announcement, "RepositionNotificationId");
     }
 
@@ -89,20 +93,20 @@ public sealed partial class ThemeTransitionPage : Page
             EntranceStackPanel.Children.Add(new Rectangle() { Width = 50, Height = 50, Margin = thickness, Fill = new SolidColorBrush(Microsoft.UI.Colors.LightBlue) });
         }
 
-        string announcement = value == 1 ? "Added 1 rectangle." : $"Added {value} rectangles.";
+        string announcement = value == 1 ? LocalizationHelper.Translate("Added 1 rectangle.") : string.Format(LocalizationHelper.Translate("Added {0} rectangles."), value);
         UIHelper.AnnounceActionForAccessibility((UIElement)sender, announcement, "EntranceAddNotificationId");
     }
 
     private void EntranceClearButton_Click(object sender, RoutedEventArgs e)
     {
         EntranceStackPanel.Children.Clear();
-        UIHelper.AnnounceActionForAccessibility((UIElement)sender, "All rectangles cleared.", "EntranceClearNotificationId");
+        UIHelper.AnnounceActionForAccessibility((UIElement)sender, LocalizationHelper.Translate("All rectangles cleared."), "EntranceClearNotificationId");
     }
 
     private void AddDeleteButton_Click(object sender, RoutedEventArgs e)
     {
         AddButton_Click(sender, e);
         DeleteButton_Click(sender, e);
-        UIHelper.AnnounceActionForAccessibility((UIElement)sender, "Item added and item deleted.", "AddDeleteBothNotificationId");
+        UIHelper.AnnounceActionForAccessibility((UIElement)sender, LocalizationHelper.Translate("Item added and item deleted."), "AddDeleteBothNotificationId");
     }
 }

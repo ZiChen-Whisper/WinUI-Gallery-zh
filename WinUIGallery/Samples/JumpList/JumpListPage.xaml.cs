@@ -25,12 +25,12 @@ public sealed partial class JumpListPage : Page
 
         JumpList jumpList = await JumpList.LoadCurrentAsync();
 
-        JumpListItem composeTask = JumpListItem.CreateWithArguments("/compose", "New Message");
-        composeTask.Description = "Compose a new message";
+        JumpListItem composeTask = JumpListItem.CreateWithArguments("/compose", LocalizationHelper.Translate("New Message"));
+        composeTask.Description = LocalizationHelper.Translate("Compose a new message");
         composeTask.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
-        JumpListItem searchTask = JumpListItem.CreateWithArguments("/search", "Search");
-        searchTask.Description = "Search for items";
+        JumpListItem searchTask = JumpListItem.CreateWithArguments("/search", LocalizationHelper.Translate("Search"));
+        searchTask.Description = LocalizationHelper.Translate("Search for items");
         searchTask.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
         jumpList.Items.Add(composeTask);
@@ -60,14 +60,14 @@ public sealed partial class JumpListPage : Page
 
         JumpList jumpList = await JumpList.LoadCurrentAsync();
 
-        JumpListItem item1 = JumpListItem.CreateWithArguments("/project-alpha", "Project Alpha");
-        item1.GroupName = "Projects";
-        item1.Description = "Open Project Alpha";
+        JumpListItem item1 = JumpListItem.CreateWithArguments("/project-alpha", LocalizationHelper.Translate("Project Alpha"));
+        item1.GroupName = LocalizationHelper.Translate("Projects");
+        item1.Description = LocalizationHelper.Translate("Open Project Alpha");
         item1.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
-        JumpListItem item2 = JumpListItem.CreateWithArguments("/project-beta", "Project Beta");
-        item2.GroupName = "Projects";
-        item2.Description = "Open Project Beta";
+        JumpListItem item2 = JumpListItem.CreateWithArguments("/project-beta", LocalizationHelper.Translate("Project Beta"));
+        item2.GroupName = LocalizationHelper.Translate("Projects");
+        item2.Description = LocalizationHelper.Translate("Open Project Beta");
         item2.Logo = new Uri("ms-appx:///Assets/Tiles/AppList.targetsize-48.png");
 
         jumpList.Items.Add(item1);

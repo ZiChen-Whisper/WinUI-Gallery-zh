@@ -166,7 +166,7 @@ public sealed partial class PullToRefreshPage : Page
 
     private void Timer1_TickImpl()
     {
-        items1.Insert(0, "NewControl " + items1AddedCount++);
+        items1.Insert(0, string.Format(LocalizationHelper.Translate("NewControl {0}"), items1AddedCount++));
         timer1.Stop();
         if (this.RefreshCompletionDeferral1 != null)
         {
@@ -178,7 +178,7 @@ public sealed partial class PullToRefreshPage : Page
 
     private void Timer2_TickImpl()
     {
-        items2.Insert(0, "New Friend " + items2AddedCount++);
+        items2.Insert(0, string.Format(LocalizationHelper.Translate("New Friend {0}"), items2AddedCount++));
         timer2.Stop();
         if (this.RefreshCompletionDeferral2 != null)
         {

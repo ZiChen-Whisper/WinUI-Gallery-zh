@@ -143,7 +143,10 @@ public sealed partial class IconographyPage : Page
                     outputString = "No icons found.";
                 }
 
-                UIHelper.AnnounceActionForAccessibility(IconsAutoSuggestBox, outputString, "AutoSuggestBoxNumberIconsFoundId");
+                UIHelper.AnnounceActionForAccessibility(
+                    IconsAutoSuggestBox,
+                    LocalizationHelper.Translate(outputString),
+                    "AutoSuggestBoxNumberIconsFoundId");
             });
         }).Start();
     }

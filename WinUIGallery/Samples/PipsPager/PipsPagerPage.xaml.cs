@@ -31,7 +31,7 @@ public sealed partial class PipsPagerPage : Page
     {
         int pageNumber = sender.SelectedPageIndex + 1; // Convert 0-based index to 1-based page number
         int totalPages = sender.NumberOfPages;
-        string announcement = $"Page {pageNumber} of {totalPages} selected";
+        string announcement = string.Format(LocalizationHelper.Translate("Page {0} of {1} selected"), pageNumber, totalPages);
         UIHelper.AnnounceActionForAccessibility(sender, announcement, PipsPagerPageChangeNotificationId);
     }
 

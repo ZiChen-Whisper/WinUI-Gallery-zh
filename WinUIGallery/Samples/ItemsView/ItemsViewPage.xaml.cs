@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
@@ -77,7 +78,7 @@ public sealed partial class ItemsViewPage : ItemsPageBase
             return;
         }
 
-        tblBasicInvokeOutput.Text = "You invoked " + invokedItem.Title + ".";
+        tblBasicInvokeOutput.Text = LocalizationHelper.Translate($"You invoked {LocalizationHelper.Translate(invokedItem.Title)}.");
     }
 
     // Example2
@@ -235,14 +236,16 @@ public sealed partial class ItemsViewPage : ItemsPageBase
             return;
         }
 
-        tblInvocationOutput.Text = "You invoked " + invokedItem.Title + ".";
+        tblInvocationOutput.Text = LocalizationHelper.Translate($"You invoked {LocalizationHelper.Translate(invokedItem.Title)}.");
     }
 
     private void SwappableSelectionModesItemsView_SelectionChanged(ItemsView sender, ItemsViewSelectionChangedEventArgs e)
     {
         if (SwappableSelectionModesItemsView != null)
         {
-            tblSelectionOutput.Text = string.Format("You have selected {0} item(s).", SwappableSelectionModesItemsView.SelectedItems.Count);
+            tblSelectionOutput.Text = string.Format(
+                LocalizationHelper.Translate("You have selected {0} item(s)."),
+                SwappableSelectionModesItemsView.SelectedItems.Count);
         }
     }
 

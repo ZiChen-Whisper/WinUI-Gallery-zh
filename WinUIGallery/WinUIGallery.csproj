@@ -109,6 +109,7 @@
         <None Update="Samples\**\*.txt" CopyToOutputDirectory="PreserveNewest" />
         <None Update="Samples\Iconography\IconsData.json" CopyToOutputDirectory="PreserveNewest" />
         <None Update="SampleSupport\Data\*.json" CopyToOutputDirectory="PreserveNewest" />
+        <None Update="Localization\*.json" CopyToOutputDirectory="PreserveNewest" />
         <Compile Remove="CollectionsInterop.cs" />
         <Compile Remove="Behaviors\ImageScrollBehavior.cs" />
         <!-- RichTextBlockFormatter is defined in ColorCode.WinUI outside the WinUI repo -->

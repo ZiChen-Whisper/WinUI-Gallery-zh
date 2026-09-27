@@ -31,6 +31,7 @@ sealed partial class App : Application
     /// </summary>
     public App()
     {
+        Microsoft.Windows.Globalization.ApplicationLanguages.PrimaryLanguageOverride = SettingsHelper.Current.DisplayLanguage;
         InitializeComponent();
         UnhandledException += HandleExceptions;
     }
@@ -105,10 +106,13 @@ sealed partial class App : Application
 
     private async void EnsureWindow()
     {
+        await LocalizationHelper.InitializeAsync();
         await ControlInfoDataSource.Instance.GetGroupsAsync();
         await IconsDataSource.Instance.LoadIcons();
 
         MainWindow.AddNavigationMenuItems();
+        MainWindow.ApplyLocalizedWindowTitle();
+        LocalizationHelper.Apply(MainWindow.Content as UIElement);
 
         ThemeHelper.Initialize();
 

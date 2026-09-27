@@ -23,7 +23,7 @@ public sealed partial class ClipboardPage : Page
     public ClipboardPage()
     {
         this.InitializeComponent();
-        richEditBox.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, "This text will be copied to the clipboard.");
+        richEditBox.Document.SetText(Microsoft.UI.Text.TextSetOptions.None, LocalizationHelper.Translate("This text will be copied to the clipboard."));
         UpdateHistoryRoamingStatus();
     }
 
@@ -39,7 +39,7 @@ public sealed partial class ClipboardPage : Page
         package.SetText(textToCopy);
         Clipboard.SetContent(package);
 
-        UIHelper.AnnounceActionForAccessibility(button, "Text copied to clipboard", "TextCopiedSuccessNotificationId");
+        UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Text copied to clipboard"), "TextCopiedSuccessNotificationId");
 
         VisualStateManager.GoToState(this, "ConfirmationClipboardVisible", false);
         Microsoft.UI.Dispatching.DispatcherQueue dispatcherQueue = Microsoft.UI.Dispatching.DispatcherQueue.GetForCurrentThread();
@@ -69,7 +69,7 @@ public sealed partial class ClipboardPage : Page
             var text = await package.GetTextAsync();
             PasteClipboard2.Text = text;
 
-            UIHelper.AnnounceActionForAccessibility(button, "Text pasted from clipboard", "TextPastedSuccessNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Text pasted from clipboard"), "TextPastedSuccessNotificationId");
         }
 
     }
@@ -87,13 +87,13 @@ public sealed partial class ClipboardPage : Page
 
         if (Clipboard.SetContentWithOptions(package, null))
         {
-            ImageStatusText.Text = "Image copied to clipboard.";
+            ImageStatusText.Text = LocalizationHelper.Translate("Image copied to clipboard.");
             ImageStatusText.Visibility = Visibility.Visible;
-            UIHelper.AnnounceActionForAccessibility(button, "Image copied to clipboard", "ImageCopiedSuccessNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Image copied to clipboard"), "ImageCopiedSuccessNotificationId");
         }
         else
         {
-            ImageStatusText.Text = "Error copying image to clipboard.";
+            ImageStatusText.Text = LocalizationHelper.Translate("Error copying image to clipboard.");
             ImageStatusText.Visibility = Visibility.Visible;
         }
     }
@@ -117,20 +117,20 @@ public sealed partial class ClipboardPage : Page
                     bitmapImage.SetSource(imageStream);
                     PastedImage.Source = bitmapImage;
                     PastedImage.Visibility = Visibility.Visible;
-                    ImageStatusText.Text = "Image pasted from clipboard.";
+                    ImageStatusText.Text = LocalizationHelper.Translate("Image pasted from clipboard.");
                     ImageStatusText.Visibility = Visibility.Visible;
-                    UIHelper.AnnounceActionForAccessibility(button, "Image pasted from clipboard", "ImagePastedSuccessNotificationId");
+                    UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Image pasted from clipboard"), "ImagePastedSuccessNotificationId");
                 }
             }
             catch (Exception ex)
             {
-                ImageStatusText.Text = "Error pasting image: " + ex.Message;
+                ImageStatusText.Text = LocalizationHelper.Translate("Error pasting image: {0}").Replace("{0}", ex.Message, StringComparison.Ordinal);
                 ImageStatusText.Visibility = Visibility.Visible;
             }
         }
         else
         {
-            ImageStatusText.Text = "Bitmap format is not available in the clipboard.";
+            ImageStatusText.Text = LocalizationHelper.Translate("Bitmap format is not available in the clipboard.");
             ImageStatusText.Visibility = Visibility.Visible;
             PastedImage.Visibility = Visibility.Collapsed;
         }
@@ -161,12 +161,12 @@ public sealed partial class ClipboardPage : Page
 
             if (Clipboard.SetContentWithOptions(package, null))
             {
-                FilesStatusText.Text = $"{pickedFiles.Count} file(s) copied to clipboard.";
-                UIHelper.AnnounceActionForAccessibility(button, $"{pickedFiles.Count} files copied to clipboard", "FilesCopiedSuccessNotificationId");
+                FilesStatusText.Text = LocalizationHelper.Translate("{0} file(s) copied to clipboard.").Replace("{0}", pickedFiles.Count.ToString(), StringComparison.Ordinal);
+                UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("{0} files copied to clipboard").Replace("{0}", pickedFiles.Count.ToString(), StringComparison.Ordinal), "FilesCopiedSuccessNotificationId");
             }
             else
             {
-                FilesStatusText.Text = "Error copying files to clipboard.";
+                FilesStatusText.Text = LocalizationHelper.Translate("Error copying files to clipboard.");
             }
         }
     }
@@ -195,24 +195,24 @@ public sealed partial class ClipboardPage : Page
                 };
 
                 var output = new StringBuilder();
-                output.AppendLine($"Requested operation: {operationName}");
-                output.AppendLine($"File(s) on clipboard ({storageItems.Count}):");
+                output.AppendLine(LocalizationHelper.Translate("Requested operation: {0}").Replace("{0}", LocalizationHelper.Translate(operationName), StringComparison.Ordinal));
+                output.AppendLine(LocalizationHelper.Translate("File(s) on clipboard ({0}):").Replace("{0}", storageItems.Count.ToString(), StringComparison.Ordinal));
                 foreach (var item in storageItems)
                 {
                     output.AppendLine($"  • {item.Name}");
                 }
 
                 FilesStatusText.Text = output.ToString();
-                UIHelper.AnnounceActionForAccessibility(button, "Files pasted from clipboard", "FilesPastedSuccessNotificationId");
+                UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Files pasted from clipboard"), "FilesPastedSuccessNotificationId");
             }
             catch (Exception ex)
             {
-                FilesStatusText.Text = "Error pasting files: " + ex.Message;
+                FilesStatusText.Text = LocalizationHelper.Translate("Error pasting files: {0}").Replace("{0}", ex.Message, StringComparison.Ordinal);
             }
         }
         else
         {
-            FilesStatusText.Text = "StorageItems format is not available in the clipboard.";
+            FilesStatusText.Text = LocalizationHelper.Translate("StorageItems format is not available in the clipboard.");
         }
     }
 
@@ -226,7 +226,7 @@ public sealed partial class ClipboardPage : Page
         string text = HistoryRoamingTextBox.Text;
         if (string.IsNullOrEmpty(text))
         {
-            HistoryRoamingStatusText.Text = "Please enter text to copy.";
+            HistoryRoamingStatusText.Text = LocalizationHelper.Translate("Please enter text to copy.");
             return;
         }
 
@@ -241,15 +241,18 @@ public sealed partial class ClipboardPage : Page
 
         if (Clipboard.SetContentWithOptions(package, options))
         {
-            var status = new StringBuilder("Text copied to clipboard.");
-            status.Append($" History: {(options.IsAllowedInHistory ? "allowed" : "excluded")}.");
-            status.Append($" Roaming: {(options.IsRoamable ? "allowed" : "excluded")}.");
+            var status = new StringBuilder(LocalizationHelper.Translate("Text copied to clipboard."));
+            status.Append(' ');
+            status.Append(LocalizationHelper.Translate("History: {0}").Replace("{0}", LocalizationHelper.Translate(options.IsAllowedInHistory ? "allowed" : "excluded"), StringComparison.Ordinal));
+            status.Append(". ");
+            status.Append(LocalizationHelper.Translate("Roaming: {0}").Replace("{0}", LocalizationHelper.Translate(options.IsRoamable ? "allowed" : "excluded"), StringComparison.Ordinal));
+            status.Append('.');
             HistoryRoamingStatusText.Text = status.ToString();
-            UIHelper.AnnounceActionForAccessibility(button, "Text copied with options", "OptionsCopiedSuccessNotificationId");
+            UIHelper.AnnounceActionForAccessibility(button, LocalizationHelper.Translate("Text copied with options"), "OptionsCopiedSuccessNotificationId");
         }
         else
         {
-            HistoryRoamingStatusText.Text = "Error copying content to clipboard.";
+            HistoryRoamingStatusText.Text = LocalizationHelper.Translate("Error copying content to clipboard.");
         }
     }
 
@@ -259,8 +262,8 @@ public sealed partial class ClipboardPage : Page
         {
             bool historyEnabled = Clipboard.IsHistoryEnabled();
             bool roamingEnabled = Clipboard.IsRoamingEnabled();
-            HistoryEnabledText.Text = $"Clipboard history: {(historyEnabled ? "enabled" : "disabled")}";
-            RoamingEnabledText.Text = $"Clipboard roaming: {(roamingEnabled ? "enabled" : "disabled")}";
+            HistoryEnabledText.Text = LocalizationHelper.Translate("Clipboard history: {0}").Replace("{0}", LocalizationHelper.Translate(historyEnabled ? "enabled" : "disabled"), StringComparison.Ordinal);
+            RoamingEnabledText.Text = LocalizationHelper.Translate("Clipboard roaming: {0}").Replace("{0}", LocalizationHelper.Translate(roamingEnabled ? "enabled" : "disabled"), StringComparison.Ordinal);
         }
         catch
         {
@@ -275,7 +278,7 @@ public sealed partial class ClipboardPage : Page
 
         if (package != null && package.AvailableFormats.Count > 0)
         {
-            output.AppendLine("Available formats on the clipboard:");
+            output.AppendLine(LocalizationHelper.Translate("Available formats on the clipboard:"));
             foreach (string format in package.AvailableFormats)
             {
                 output.AppendLine($"  • {format}");
@@ -283,7 +286,7 @@ public sealed partial class ClipboardPage : Page
         }
         else
         {
-            output.AppendLine("The clipboard is empty.");
+            output.AppendLine(LocalizationHelper.Translate("The clipboard is empty."));
         }
 
         OtherOperationsStatusText.Text = output.ToString();
@@ -294,11 +297,11 @@ public sealed partial class ClipboardPage : Page
         try
         {
             Clipboard.Clear();
-            OtherOperationsStatusText.Text = "Clipboard has been cleared.";
+            OtherOperationsStatusText.Text = LocalizationHelper.Translate("Clipboard has been cleared.");
         }
         catch (Exception ex)
         {
-            OtherOperationsStatusText.Text = "Error clearing clipboard: " + ex.Message;
+            OtherOperationsStatusText.Text = LocalizationHelper.Translate("Error clearing clipboard: {0}").Replace("{0}", ex.Message, StringComparison.Ordinal);
         }
     }
 
@@ -307,12 +310,12 @@ public sealed partial class ClipboardPage : Page
         if (ContentChangedToggle.IsOn)
         {
             Clipboard.ContentChanged += OnClipboardContentChanged;
-            OtherOperationsStatusText.Text = "Monitoring clipboard changes...";
+            OtherOperationsStatusText.Text = LocalizationHelper.Translate("Monitoring clipboard changes...");
         }
         else
         {
             Clipboard.ContentChanged -= OnClipboardContentChanged;
-            OtherOperationsStatusText.Text = "Stopped monitoring clipboard changes.";
+            OtherOperationsStatusText.Text = LocalizationHelper.Translate("Stopped monitoring clipboard changes.");
         }
     }
 
@@ -321,11 +324,11 @@ public sealed partial class ClipboardPage : Page
         DispatcherQueue.TryEnqueue(() =>
         {
             DataPackageView package = Clipboard.GetContent();
-            var output = new StringBuilder("Clipboard content changed!\n");
+            var output = new StringBuilder(LocalizationHelper.Translate("Clipboard content changed!\n"));
 
             if (package != null && package.AvailableFormats.Count > 0)
             {
-                output.AppendLine("New formats:");
+                output.AppendLine(LocalizationHelper.Translate("New formats:"));
                 foreach (string format in package.AvailableFormats)
                 {
                     output.AppendLine($"  • {format}");
@@ -333,7 +336,7 @@ public sealed partial class ClipboardPage : Page
             }
             else
             {
-                output.AppendLine("Clipboard is now empty.");
+                output.AppendLine(LocalizationHelper.Translate("Clipboard is now empty."));
             }
 
             OtherOperationsStatusText.Text = output.ToString();

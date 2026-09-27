@@ -1,10 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using WinUIGallery.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -15,6 +18,22 @@ public sealed partial class ColorPage : Page
     public ColorPage()
     {
         this.InitializeComponent();
+        NavigationFrame.Navigated += OnSectionNavigated;
+    }
+
+    private void OnSectionNavigated(object sender, NavigationEventArgs e)
+    {
+        if (e.Content is FrameworkElement section)
+        {
+            LocalizationHelper.Apply(section);
+            RoutedEventHandler? applyOnLoaded = null;
+            applyOnLoaded = (_, _) =>
+            {
+                section.Loaded -= applyOnLoaded;
+                LocalizationHelper.Apply(section);
+            };
+            section.Loaded += applyOnLoaded;
+        }
     }
 
     private void PageSelector_SelectionChanged(SelectorBar sender, SelectorBarSelectionChangedEventArgs args)

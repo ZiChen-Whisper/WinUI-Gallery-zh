@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Shapes;
 using System;
 using Windows.UI;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -35,13 +36,13 @@ public sealed partial class AccessibilityColorContrastPage : Page
         {
             background.Fill = new SolidColorBrush(Microsoft.UI.Colors.DarkGreen);
             icon.Glyph = "\uE73E";
-            resultName.Text = "Pass";
+            resultName.Text = LocalizationHelper.Translate("Pass");
         }
         else
         {
             background.Fill = new SolidColorBrush(Microsoft.UI.Colors.DarkRed);
             icon.Glyph = "\uE711";
-            resultName.Text = "Fail";
+            resultName.Text = LocalizationHelper.Translate("Fail");
         }
     }
 

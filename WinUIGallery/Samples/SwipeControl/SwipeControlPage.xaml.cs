@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml.Controls;
 using System.Collections.ObjectModel;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -30,11 +31,11 @@ public sealed partial class SwipeControlPage : Page
 
         if (isArchived)
         {
-            ((TextBlock)args.SwipeControl.Content).Text = "Archived - Swipe Left";
+            ((TextBlock)args.SwipeControl.Content).Text = LocalizationHelper.Translate("Archived - Swipe Left");
         }
         else
         {
-            ((TextBlock)args.SwipeControl.Content).Text = "Swipe Left";
+            ((TextBlock)args.SwipeControl.Content).Text = LocalizationHelper.Translate("Swipe Left");
         }
     }
 
@@ -52,13 +53,13 @@ public sealed partial class SwipeControlPage : Page
         {
             FontIconSource cancelIcon = new FontIconSource() { Glyph = "\ue711" };
             sender.IconSource = cancelIcon;
-            sender.Text = "Cancel";
+            sender.Text = LocalizationHelper.Translate("Cancel");
         }
         else
         {
             FontIconSource acceptIcon = new FontIconSource() { Glyph = "\ue10B" };
             sender.IconSource = acceptIcon;
-            sender.Text = "Accept";
+            sender.Text = LocalizationHelper.Translate("Accept");
         }
     }
 
@@ -71,13 +72,13 @@ public sealed partial class SwipeControlPage : Page
         {
             FontIconSource filledFlagIcon = new FontIconSource() { Glyph = "\ueB4B" };
             sender.IconSource = filledFlagIcon;
-            sender.Text = "Unmark";
+            sender.Text = LocalizationHelper.Translate("Unmark");
         }
         else
         {
             FontIconSource flagIcon = new FontIconSource() { Glyph = "\ue129" };
             sender.IconSource = flagIcon;
-            sender.Text = "Flag";
+            sender.Text = LocalizationHelper.Translate("Flag");
         }
     }
 
@@ -85,19 +86,19 @@ public sealed partial class SwipeControlPage : Page
     {
         if (isAccepted && !isFlagged)
         {
-            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted";
+            ((TextBlock)swipeCtrl.Content).Text = LocalizationHelper.Translate("Swipe Right - Accepted");
         }
         else if (isAccepted && isFlagged)
         {
-            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Accepted & Flagged";
+            ((TextBlock)swipeCtrl.Content).Text = LocalizationHelper.Translate("Swipe Right - Accepted & Flagged");
         }
         else if (!isAccepted && isFlagged)
         {
-            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right - Flagged";
+            ((TextBlock)swipeCtrl.Content).Text = LocalizationHelper.Translate("Swipe Right - Flagged");
         }
         else
         {
-            ((TextBlock)swipeCtrl.Content).Text = "Swipe Right";
+            ((TextBlock)swipeCtrl.Content).Text = LocalizationHelper.Translate("Swipe Right");
         }
     }
 }

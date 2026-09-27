@@ -4,7 +4,9 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System;
 using System.ComponentModel;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -57,7 +59,7 @@ public sealed partial class CommandBarPage : Page, INotifyPropertyChanged
             return;
         }
 
-        SelectedOptionText.Text = "You clicked: " + appBarButon.Label;
+        SelectedOptionText.Text = LocalizationHelper.Translate("You clicked: {0}").Replace("{0}", appBarButon.Label ?? string.Empty, StringComparison.Ordinal);
     }
 
     private void AddSecondaryCommands_Click(object sender, RoutedEventArgs e)

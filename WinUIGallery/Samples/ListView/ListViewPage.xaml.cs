@@ -287,7 +287,9 @@ public sealed partial class ListViewPage : ItemsPageBase
         Remove_NonMatching(filtered);
         AddBack_Contacts(filtered);
 
-        UIHelper.AnnounceActionForAccessibility(FilteredListView, $"Found {filtered.Count()} contacts", "ContactListViewFilteredActivityId");
+        UIHelper.AnnounceActionForAccessibility(FilteredListView,
+            LocalizationHelper.Translate($"Found {filtered.Count()} contacts"),
+            "ContactListViewFilteredActivityId");
     }
 
     private bool Filter(Contact contact)

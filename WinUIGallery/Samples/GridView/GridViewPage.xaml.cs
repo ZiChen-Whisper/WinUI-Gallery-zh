@@ -4,8 +4,10 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using WinUIGallery.Helpers;
 using WinUIGallery.Pages;
 
 namespace WinUIGallery.ControlPages;
@@ -121,7 +123,7 @@ public sealed partial class GridViewPage : ItemsPageBase
     {
         if (sender is GridView gridView)
         {
-            SelectionOutput.Text = string.Format("You have selected {0} item(s).", gridView.SelectedItems.Count);
+            SelectionOutput.Text = string.Format(LocalizationHelper.Translate("You have selected {0} item(s)."), gridView.SelectedItems.Count);
         }
     }
 
@@ -132,7 +134,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             return;
         }
 
-        ClickOutput.Text = "You clicked " + clickedItem.Title + ".";
+        ClickOutput.Text = LocalizationHelper.Translate("You clicked {0}.").Replace("{0}", clickedItem.Title, StringComparison.Ordinal);
     }
 
     private void BasicGridView_ItemClick(object sender, ItemClickEventArgs e)
@@ -142,7 +144,7 @@ public sealed partial class GridViewPage : ItemsPageBase
             return;
         }
 
-        ClickOutput0.Text = "You clicked " + clickedItem.Title + ".";
+        ClickOutput0.Text = LocalizationHelper.Translate("You clicked {0}.").Replace("{0}", clickedItem.Title, StringComparison.Ordinal);
     }
 
     private void ItemClickCheckBox_Click(object sender, RoutedEventArgs e)

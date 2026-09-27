@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Automation;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -26,7 +27,9 @@ public sealed partial class CanvasPage : Page
         int minimumValue = (int)ZSlider.Minimum;
         int maximumValue = (int)ZSlider.Maximum;
 
-        string automationName = $"Canvas.ZIndex value {currentValue} of range {minimumValue} to {maximumValue}";
+        string automationName = LocalizationHelper.IsChinese
+            ? $"Canvas.ZIndex 的值为 {currentValue}，有效范围是 {minimumValue} 到 {maximumValue}。"
+            : $"Canvas.ZIndex value {currentValue} of range {minimumValue} to {maximumValue}";
         AutomationProperties.SetName(ZSlider, automationName);
     }
 }

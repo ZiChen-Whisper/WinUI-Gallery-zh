@@ -62,7 +62,7 @@ public sealed partial class TabViewPage : Page
     {
         TabViewItem newItem = new TabViewItem
         {
-            Header = $"Document {index}",
+            Header = string.Format(LocalizationHelper.Translate("Document {0}"), index),
             IconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Document },
             ContextFlyout = TabViewContextMenu
         };
@@ -119,7 +119,7 @@ public sealed partial class TabViewPage : Page
 
         var newData = new MyData
         {
-            DataHeader = $"MyData Doc {index}",
+            DataHeader = string.Format(LocalizationHelper.Translate("MyData Doc {0}"), index),
             DataIconSource = new Microsoft.UI.Xaml.Controls.SymbolIconSource() { Symbol = Symbol.Placeholder },
             DataContent = frame,
         };

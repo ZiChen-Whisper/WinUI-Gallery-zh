@@ -43,6 +43,15 @@
                         <RepositionThemeTransition />
                     </StackPanel.ChildrenTransitions>
                     <TextBlock Style="{StaticResource SettingsSectionHeaderTextBlockStyle}" Text="Appearance &amp; behavior" />
+                    <toolkit:SettingsCard Description="The app restarts after a language change" Header="Display language">
+                        <toolkit:SettingsCard.HeaderIcon>
+                            <FontIcon Glyph="&#xE8D4;" />
+                        </toolkit:SettingsCard.HeaderIcon>
+                        <ComboBox x:Name="languageMode" SelectionChanged="languageMode_SelectionChanged">
+                            <ComboBoxItem Content="中文（简体）" Tag="zh-CN" />
+                            <ComboBoxItem Content="English" Tag="en-US" />
+                        </ComboBox>
+                    </toolkit:SettingsCard>
                     <toolkit:SettingsCard Description="Select which app theme to display" Header="App theme">
                         <toolkit:SettingsCard.HeaderIcon>
                             <FontIcon Glyph="&#xE790;" />

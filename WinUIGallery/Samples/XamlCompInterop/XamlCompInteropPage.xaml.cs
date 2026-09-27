@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Input;
 using System;
 using System.Globalization;
 using System.Numerics;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -139,8 +140,8 @@ public sealed partial class XamlCompInteropPage : Page
         int totalElements = 8;
         for (int i = 0; i < totalElements; i++)
         {
-            Button element = new Button() { Content = "Button" };
-            AutomationProperties.SetName(element, "Button " + i);
+            Button element = new Button() { Content = LocalizationHelper.Translate("Button") };
+            AutomationProperties.SetName(element, string.Format(LocalizationHelper.Translate("Button {0}"), i));
 
             LayoutPanel.Children.Add(element);
 

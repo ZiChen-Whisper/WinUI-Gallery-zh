@@ -4,6 +4,7 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Imaging;
 using System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -25,7 +26,7 @@ public sealed partial class PersonPicturePage : Page
         else if (DisplayNameRadio.IsChecked == true)
         {
             personPicture.ProfilePicture = null;
-            personPicture.DisplayName = "Jane Doe";
+            personPicture.DisplayName = LocalizationHelper.Translate("Jane Doe");
             personPicture.Initials = null;
         }
         else if (InitialsRadio.IsChecked == true)

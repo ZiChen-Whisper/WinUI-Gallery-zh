@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 using WinUIGallery.Samples.SamplePages;
 
 namespace WinUIGallery.ControlPages;
@@ -12,6 +13,18 @@ public sealed partial class AppWindowPage : Page
     public AppWindowPage()
     {
         this.InitializeComponent();
+        Loaded += AppWindowPage_Loaded;
+    }
+
+    private void AppWindowPage_Loaded(object sender, RoutedEventArgs e)
+    {
+        foreach (object item in InitialSize.Items)
+        {
+            if (item is ComboBoxItem comboBoxItem && comboBoxItem.Tag is string sourceText)
+            {
+                comboBoxItem.Content = LocalizationHelper.Translate(sourceText);
+            }
+        }
     }
 
     private void ShowSampleWindow1(object sender, RoutedEventArgs e)
@@ -70,7 +83,7 @@ public sealed partial class AppWindowPage : Page
 
     private void ShowSampleWindow7(object sender, RoutedEventArgs e)
     {
-        SampleWindow7 window = new SampleWindow7((string)InitialSize.SelectedItem);
+        SampleWindow7 window = new SampleWindow7(InitialSize.SelectedValue?.ToString() ?? "Small");
         window.Activate();
     }
 
@@ -81,7 +94,7 @@ public sealed partial class AppWindowPage : Page
             return;
         }
 
-        string size = InitialSize.SelectedItem.ToString() ?? "Unknown";
+        string size = InitialSize.SelectedValue?.ToString() ?? "Unknown";
         string percentage = size switch
         {
             "Small" => "5%",
@@ -90,6 +103,8 @@ public sealed partial class AppWindowPage : Page
             _ => "Unknown"
         };
 
-        InitialSizeDescription.Text = $"{size}: Window size is approximately {percentage} of the display's work area.";
+        InitialSizeDescription.Text = LocalizationHelper.IsChinese
+            ? $"{LocalizationHelper.Translate(size)}：窗口大小约占显示器工作区域的 {percentage}。"
+            : $"{size}: Window size is approximately {percentage} of the display's work area.";
     }
 }

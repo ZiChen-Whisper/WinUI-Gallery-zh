@@ -10,6 +10,7 @@ using Microsoft.UI.Xaml.Markup;
 using System;
 using System.Linq;
 using Windows.System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -32,7 +33,7 @@ public sealed partial class ScratchPadPage : Page
     {
         scratchPad.Content = new TextBlock()
         {
-            Text = "Click the Load button to load the content below.",
+            Text = LocalizationHelper.Translate("Click the Load button to load the content below."),
             HorizontalAlignment = HorizontalAlignment.Center,
             VerticalAlignment = VerticalAlignment.Center,
             TextWrapping = TextWrapping.Wrap
@@ -55,10 +56,10 @@ public sealed partial class ScratchPadPage : Page
     {
         ContentDialog dialog = new ContentDialog();
         dialog.XamlRoot = this.XamlRoot;
-        dialog.Title = "Are you sure you want to reset?";
-        dialog.Content = "Resetting to the default content will replace your current content. Are you sure you want to reset?";
-        dialog.PrimaryButtonText = "Reset";
-        dialog.CloseButtonText = "Cancel";
+        dialog.Title = LocalizationHelper.Translate("Are you sure you want to reset?");
+        dialog.Content = LocalizationHelper.Translate("Resetting to the default content will replace your current content. Are you sure you want to reset?");
+        dialog.PrimaryButtonText = LocalizationHelper.Translate("Reset");
+        dialog.CloseButtonText = LocalizationHelper.Translate("Cancel");
         dialog.DefaultButton = ContentDialogButton.Primary;
         dialog.RequestedTheme = this.ActualTheme;
 
@@ -83,7 +84,7 @@ public sealed partial class ScratchPadPage : Page
         var insertIndex = xml.IndexOfAny(chars);
         if (insertIndex < 0)
         {
-            throw new ArgumentException("No end tag.");
+            throw new ArgumentException(LocalizationHelper.Translate("No end tag."));
         }
 
         xml = xml.Substring(0, insertIndex) + " xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation' xmlns:x='http://schemas.microsoft.com/winfx/2006/xaml' " + xml.Substring(insertIndex);
@@ -105,7 +106,7 @@ public sealed partial class ScratchPadPage : Page
 
             var element = (UIElement)XamlReader.Load(xml);
             scratchPad.Content = element;
-            loadStatus.Text = "Load successful.";
+            loadStatus.Text = LocalizationHelper.Translate("Load successful.");
         }
         catch (Exception ex)
         {

@@ -5,6 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.ObjectModel;
+using WinUIGallery.Helpers;
 
 
 namespace WinUIGallery.ControlPages;
@@ -42,7 +43,7 @@ public sealed partial class SplitViewPage : Page
             return;
         }
 
-        content.Text = navLink.Label + " Page";
+        content.Text = string.Format(LocalizationHelper.Translate("{0} Page"), navLink.Label);
     }
 
     private void PanePlacement_Toggled(object sender, RoutedEventArgs e)

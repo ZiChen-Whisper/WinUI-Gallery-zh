@@ -27,11 +27,13 @@
                         Width="200"
                         Header="Colors"
                         PlaceholderText="Pick a color"
+                        SelectedValuePath="Tag"
+                        Loaded="ColorComboBox_Loaded"
                         SelectionChanged="ColorComboBox_SelectionChanged">
-                        <x:String>Blue</x:String>
-                        <x:String>Green</x:String>
-                        <x:String>Red</x:String>
-                        <x:String>Yellow</x:String>
+                        <ComboBoxItem Content="Blue" Tag="Blue" />
+                        <ComboBoxItem Content="Green" Tag="Green" />
+                        <ComboBoxItem Content="Red" Tag="Red" />
+                        <ComboBoxItem Content="Yellow" Tag="Yellow" />
                     </ComboBox>
                     <Rectangle
                         x:Name="Control1Output"

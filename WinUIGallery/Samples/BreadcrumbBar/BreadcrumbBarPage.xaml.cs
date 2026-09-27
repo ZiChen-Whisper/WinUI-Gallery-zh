@@ -16,15 +16,21 @@ public sealed partial class BreadcrumbBarPage : Page
     // which means we lose access to the full original list.
     private readonly List<Folder> _defaultFolders = new()
     {
-        new Folder { Name = "Home" },
-        new Folder { Name = "Folder1" },
-        new Folder { Name = "Folder2" },
-        new Folder { Name = "Folder3" },
+        new Folder { Name = LocalizationHelper.Translate("Home") },
+        new Folder { Name = LocalizationHelper.Translate("Folder1") },
+        new Folder { Name = LocalizationHelper.Translate("Folder2") },
+        new Folder { Name = LocalizationHelper.Translate("Folder3") },
     };
 
     public ObservableCollection<Folder> Folders { get; } = new();
 
-    public readonly string[] FoldersString = new string[] { "Home", "Documents", "Design", "Northwind", "Images", "Folder1", "Folder2", "Folder3" };
+    public readonly string[] FoldersString = new string[]
+    {
+        LocalizationHelper.Translate("Home"), LocalizationHelper.Translate("Documents"),
+        LocalizationHelper.Translate("Design"), LocalizationHelper.Translate("Northwind"),
+        LocalizationHelper.Translate("Images"), LocalizationHelper.Translate("Folder1"),
+        LocalizationHelper.Translate("Folder2"), LocalizationHelper.Translate("Folder3")
+    };
     public BreadcrumbBarPage()
     {
         this.InitializeComponent();
@@ -68,7 +74,7 @@ public sealed partial class BreadcrumbBarPage : Page
 
 
         // Announce reset success notifiication.
-        UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, "BreadcrumbBar sample reset successful.", "BreadCrumbBarSampleResetNotificationId");
+        UIHelper.AnnounceActionForAccessibility(ResetSampleBtn, LocalizationHelper.Translate("BreadcrumbBar sample reset successful."), "BreadCrumbBarSampleResetNotificationId");
     }
 }
 

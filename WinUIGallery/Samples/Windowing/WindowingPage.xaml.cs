@@ -25,7 +25,7 @@ public sealed partial class WindowingPage : Page
             SystemBackdrop = new MicaBackdrop(),
             Content = new TextBlock
             {
-                Text = "New child window!",
+                Text = LocalizationHelper.Translate("New child window!"),
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
                 RequestedTheme = ActualTheme
@@ -54,14 +54,14 @@ public sealed partial class WindowingPage : Page
             !double.IsFinite(maxWidth) ||
             !double.IsFinite(maxHeight))
         {
-            SizeValidationInfoBar.Message = "Enter a value for every dimension.";
+            SizeValidationInfoBar.Message = LocalizationHelper.Translate("Enter a value for every dimension.");
             SizeValidationInfoBar.IsOpen = true;
             return;
         }
 
         if (minWidth > width || width > maxWidth || minHeight > height || height > maxHeight)
         {
-            SizeValidationInfoBar.Message = "Width and Height must be within their minimum and maximum limits.";
+            SizeValidationInfoBar.Message = LocalizationHelper.Translate("Width and Height must be within their minimum and maximum limits.");
             SizeValidationInfoBar.IsOpen = true;
             return;
         }
@@ -69,8 +69,8 @@ public sealed partial class WindowingPage : Page
         SizeValidationInfoBar.IsOpen = false;
 
         Window window = CreateSampleWindow(
-            "Window client size and constraints (experimental)",
-            $"Initial client area: {width} by {height} DIPs. Width is constrained to {minWidth} to {maxWidth} DIPs and height to {minHeight} to {maxHeight} DIPs. Try resizing this window.");
+            LocalizationHelper.Translate("Window client size and constraints (experimental)"),
+            string.Format(LocalizationHelper.Translate("Initial client area: {0} by {1} DIPs. Width is constrained to {2} to {3} DIPs and height to {4} to {5} DIPs. Try resizing this window."), width, height, minWidth, maxWidth, minHeight, maxHeight));
         window.MinWidth = minWidth;
         window.MinHeight = minHeight;
         window.MaxWidth = maxWidth;

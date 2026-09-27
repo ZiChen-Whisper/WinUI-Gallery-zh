@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Automation.Peers;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media;
 using System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -18,7 +19,7 @@ public sealed partial class ContentDialogPage : Page
 
     private void SetDialogResultText(TextBlock targetTextBlock, string text)
     {
-        targetTextBlock.Text = text;
+        targetTextBlock.Text = LocalizationHelper.Translate(text);
         var peer = FrameworkElementAutomationPeer.FromElement(targetTextBlock) ?? FrameworkElementAutomationPeer.CreatePeerForElement(targetTextBlock);
         peer?.RaiseAutomationEvent(AutomationEvents.LiveRegionChanged);
     }
@@ -30,12 +31,13 @@ public sealed partial class ContentDialogPage : Page
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = this.XamlRoot;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Save your work?";
-        dialog.PrimaryButtonText = "Save";
-        dialog.SecondaryButtonText = "Don't Save";
-        dialog.CloseButtonText = "Cancel";
+        dialog.Title = LocalizationHelper.Translate("Save your work?");
+        dialog.PrimaryButtonText = LocalizationHelper.Translate("Save");
+        dialog.SecondaryButtonText = LocalizationHelper.Translate("Don't Save");
+        dialog.CloseButtonText = LocalizationHelper.Translate("Cancel");
         dialog.DefaultButton = ContentDialogButton.Primary;
         dialog.Content = new ContentDialogContent();
+        LocalizationHelper.Apply(dialog.Content as UIElement);
 
         if (sender is Button button &&
             VisualTreeHelper.GetParent(button) is StackPanel stackPanel)
@@ -66,12 +68,13 @@ public sealed partial class ContentDialogPage : Page
         // XamlRoot must be set in the case of a ContentDialog running in a Desktop app
         dialog.XamlRoot = this.XamlRoot;
         dialog.Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style;
-        dialog.Title = "Replace file?";
-        dialog.PrimaryButtonText = "Replace";
-        dialog.SecondaryButtonText = "Keep";
-        dialog.CloseButtonText = "Cancel";
+        dialog.Title = LocalizationHelper.Translate("Replace file?");
+        dialog.PrimaryButtonText = LocalizationHelper.Translate("Replace");
+        dialog.SecondaryButtonText = LocalizationHelper.Translate("Keep");
+        dialog.CloseButtonText = LocalizationHelper.Translate("Cancel");
         dialog.DefaultButton = ContentDialogButton.None;
         dialog.Content = new ContentDialogContent();
+        LocalizationHelper.Apply(dialog.Content as UIElement);
 
         if (sender is Button button &&
             VisualTreeHelper.GetParent(button) is StackPanel stackPanel)

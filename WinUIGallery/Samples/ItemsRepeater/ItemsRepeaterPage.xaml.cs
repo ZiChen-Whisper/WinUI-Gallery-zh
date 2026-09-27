@@ -331,7 +331,8 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         _realizedFlowLayoutCountUpdateQueued = DispatcherQueue.TryEnqueue(() =>
         {
             _realizedFlowLayoutCountUpdateQueued = false;
-            RealizedCountText.Text = $"Realized elements: {_realizedFlowLayoutElements.Count} of {FlowLayoutItems.Count}";
+            RealizedCountText.Text = LocalizationHelper.Translate(
+                $"Realized elements: {_realizedFlowLayoutElements.Count} of {FlowLayoutItems.Count}");
         });
     }
 
@@ -379,7 +380,10 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
         // Update corresponding rectangle with selected color
         colorRectangle.Fill = senderBtn.Background;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(senderBtn, $"Rectangle color set to {senderBtn.Content}", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(senderBtn,
+            LocalizationHelper.Translate(
+                $"Rectangle color set to {LocalizationHelper.Translate(senderBtn.Content?.ToString() ?? string.Empty)}"),
+            "RectangleChangedNotificationActivityId");
         SetUIANamesForSelectedEntry(senderBtn);
     }
 
@@ -416,7 +420,10 @@ public sealed partial class ItemsRepeaterPage : ItemsPageBase
             AutomationProperties.SetName(LastSelectedColorButton, content);
         }
 
-        AutomationProperties.SetName(selectedItem, (string)selectedItem.Content + " , selected");
+        AutomationProperties.SetName(
+            selectedItem,
+            LocalizationHelper.Translate(
+                $"{LocalizationHelper.Translate((string)selectedItem.Content)} , selected"));
         LastSelectedColorButton = selectedItem;
     }
 

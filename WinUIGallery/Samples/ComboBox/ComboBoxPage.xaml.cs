@@ -8,6 +8,7 @@ using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using Windows.Foundation.Metadata;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -36,9 +37,25 @@ public sealed partial class ComboBoxPage : Page
         this.InitializeComponent();
     }
 
+    private void ColorComboBox_Loaded(object sender, RoutedEventArgs e)
+    {
+        if (sender is not ComboBox comboBox)
+        {
+            return;
+        }
+
+        foreach (object item in comboBox.Items)
+        {
+            if (item is ComboBoxItem comboBoxItem && comboBoxItem.Tag is string sourceText)
+            {
+                comboBoxItem.Content = LocalizationHelper.Translate(sourceText);
+            }
+        }
+    }
+
     private void ColorComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        string? colorName = e.AddedItems[0].ToString();
+        string? colorName = (e.AddedItems[0] as ComboBoxItem)?.Tag?.ToString();
         Windows.UI.Color color;
         switch (colorName)
         {
@@ -55,7 +72,7 @@ public sealed partial class ComboBoxPage : Page
                 color = Colors.Red;
                 break;
             default:
-                throw new Exception($"Invalid argument: {colorName}");
+                throw new Exception(LocalizationHelper.Translate("Invalid argument: {0}").Replace("{0}", colorName, StringComparison.Ordinal));
         }
         Control1Output.Fill = new SolidColorBrush(color);
     }
@@ -85,11 +102,11 @@ public sealed partial class ComboBoxPage : Page
         else
         {
             // If the item is invalid, reject it and revert the text. 
-            sender.Text = sender.SelectedValue.ToString();
+            sender.Text = LocalizationHelper.Translate(sender.SelectedValue?.ToString() ?? string.Empty);
 
             var dialog = new ContentDialog();
-            dialog.Content = "The font size must be a number between 8 and 100.";
-            dialog.CloseButtonText = "Close";
+            dialog.Content = LocalizationHelper.Translate("The font size must be a number between 8 and 100.");
+            dialog.CloseButtonText = LocalizationHelper.Translate("Close");
             dialog.DefaultButton = ContentDialogButton.Close;
             dialog.XamlRoot = sender.XamlRoot;
             _ = dialog.ShowAsync();

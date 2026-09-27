@@ -279,12 +279,13 @@
                     <ComboBox
                         x:Name="InitialSize"
                         Width="150"
+                        SelectedValuePath="Tag"
                         Header="InitialSize"
                         SelectedIndex="0"
                         SelectionChanged="InitialSize_SelectionChanged">
-                        <x:String>Small</x:String>
-                        <x:String>Medium</x:String>
-                        <x:String>Large</x:String>
+                        <ComboBoxItem Content="Small" Tag="Small" />
+                        <ComboBoxItem Content="Medium" Tag="Medium" />
+                        <ComboBoxItem Content="Large" Tag="Large" />
                     </ComboBox>
                     <TextBlock
                         x:Name="InitialSizeDescription"
@@ -294,7 +295,7 @@
                 </StackPanel>
             </controls:ControlExample.Options>
             <controls:ControlExample.Substitutions>
-                <controls:ControlExampleSubstitution Key="InitialSize" Value="{x:Bind InitialSize.SelectedItem, Mode=OneWay}" />
+                <controls:ControlExampleSubstitution Key="InitialSize" Value="{x:Bind InitialSize.SelectedValue, Mode=OneWay}" />
             </controls:ControlExample.Substitutions>
         </controls:ControlExample>
     </StackPanel>

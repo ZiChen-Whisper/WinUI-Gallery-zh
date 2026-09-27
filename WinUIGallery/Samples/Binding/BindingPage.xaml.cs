@@ -5,12 +5,14 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
 public sealed partial class BindingPage : Page
 {
-    public string GreetingMessage { get; set; } = "Hello, WinUI 3!";
+    public string GreetingMessage { get; set; } = LocalizationHelper.Translate("Hello, WinUI 3!");
 
     public ExampleViewModel ViewModel { get; set; }
 
@@ -22,8 +24,8 @@ public sealed partial class BindingPage : Page
 
         ViewModel = new ExampleViewModel
         {
-            Title = "Welcome to WinUI 3",
-            Description = "This is an example of binding to a view model.",
+            Title = LocalizationHelper.Translate("Welcome to WinUI 3"),
+            Description = LocalizationHelper.Translate("This is an example of binding to a view model."),
             NullString = string.Empty,
         };
         DataContext = ViewModel;
@@ -33,28 +35,28 @@ public sealed partial class BindingPage : Page
             new ListDetailItem
             {
                 Id = 0,
-                Title = "Item 1",
+                Title = LocalizationHelper.Translate("Item 1"),
                 Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer id facilisis lectus. Cras nec convallis ante, quis pulvinar tellus.",
                 DateCreated = new DateTime(2025, 6, 15, 9, 30, 0)
             },
             new ListDetailItem
             {
                 Id = 1,
-                Title = "Item 2",
+                Title = LocalizationHelper.Translate("Item 2"),
                 Text = "Quisque accumsan pretium ligula in faucibus. Mauris sollicitudin augue vitae lorem cursus condimentum quis ac mauris.",
                 DateCreated = new DateTime(2025, 7, 22, 14, 15, 0)
             },
             new ListDetailItem
             {
                 Id = 2,
-                Title = "Item 3",
+                Title = LocalizationHelper.Translate("Item 3"),
                 Text = "Ut consequat magna luctus justo egestas vehicula. Integer pharetra risus libero, et posuere justo mattis et.",
                 DateCreated = new DateTime(2025, 8, 3, 11, 0, 0)
             },
             new ListDetailItem
             {
                 Id = 3,
-                Title = "Item 4",
+                Title = LocalizationHelper.Translate("Item 4"),
                 Text = "Duis facilisis, quam ut laoreet commodo, elit ex aliquet massa, non varius tellus lectus et nunc.",
                 DateCreated = new DateTime(2025, 9, 10, 16, 45, 0)
             }
@@ -65,11 +67,15 @@ public sealed partial class BindingPage : Page
     {
         if (date.HasValue)
         {
-            return "Selected date is: " + date.Value.ToString("dddd, MMMM d, yyyy");
+            var culture = LocalizationHelper.IsChinese ? CultureInfo.GetCultureInfo("zh-CN") : CultureInfo.CurrentCulture;
+            string dateText = date.Value.ToString(
+                LocalizationHelper.IsChinese ? "yyyy年M月d日 dddd" : "dddd, MMMM d, yyyy",
+                culture);
+            return LocalizationHelper.Translate("Selected date is: {0}").Replace("{0}", dateText, StringComparison.Ordinal);
         }
         else
         {
-            return "No date selected";
+            return LocalizationHelper.Translate("No date selected");
         }
     }
 }
@@ -133,5 +139,7 @@ public class ListDetailItem
     public string Title { get; set; } = string.Empty;
     public string Text { get; set; } = string.Empty;
     public DateTime DateCreated { get; set; }
-    public string DateCreatedFormatted => DateCreated.ToString("MMM d, yyyy h:mm tt");
+    public string DateCreatedFormatted => DateCreated.ToString(
+        "MMM d, yyyy h:mm tt",
+        LocalizationHelper.IsChinese ? CultureInfo.GetCultureInfo("zh-CN") : CultureInfo.CurrentCulture);
 }

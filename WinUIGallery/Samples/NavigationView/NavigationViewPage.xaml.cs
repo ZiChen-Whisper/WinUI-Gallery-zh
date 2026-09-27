@@ -37,11 +37,31 @@ public sealed partial class NavigationViewPage : Page
         nvSample9.SelectedItem = nvSample9.MenuItems.OfType<Microsoft.UI.Xaml.Controls.NavigationViewItem>().First();
 
         Categories = new ObservableCollection<CategoryBase>();
-        Category firstCategory = new Category { Name = "Category 1", Glyph = Symbol.Home, Tooltip = "This is category 1" };
+        Category firstCategory = new Category
+        {
+            Name = LocalizationHelper.Translate("Category 1"),
+            Glyph = Symbol.Home,
+            Tooltip = LocalizationHelper.Translate("This is category 1")
+        };
         Categories.Add(firstCategory);
-        Categories.Add(new Category { Name = "Category 2", Glyph = Symbol.Keyboard, Tooltip = "This is category 2" });
-        Categories.Add(new Category { Name = "Category 3", Glyph = Symbol.Library, Tooltip = "This is category 3" });
-        Categories.Add(new Category { Name = "Category 4", Glyph = Symbol.Mail, Tooltip = "This is category 4" });
+        Categories.Add(new Category
+        {
+            Name = LocalizationHelper.Translate("Category 2"),
+            Glyph = Symbol.Keyboard,
+            Tooltip = LocalizationHelper.Translate("This is category 2")
+        });
+        Categories.Add(new Category
+        {
+            Name = LocalizationHelper.Translate("Category 3"),
+            Glyph = Symbol.Library,
+            Tooltip = LocalizationHelper.Translate("This is category 3")
+        });
+        Categories.Add(new Category
+        {
+            Name = LocalizationHelper.Translate("Category 4"),
+            Glyph = Symbol.Mail,
+            Tooltip = LocalizationHelper.Translate("This is category 4")
+        });
         nvSample4.SelectedItem = firstCategory;
 
         setASBSubstitutionString();
@@ -74,7 +94,7 @@ public sealed partial class NavigationViewPage : Page
             if (selectedItem != null)
             {
                 string selectedItemTag = ((string)selectedItem.Tag);
-                sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+                sender.Header = LocalizationHelper.Translate($"Sample Page {selectedItemTag.Substring(selectedItemTag.Length - 1)}");
                 string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
                 SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
                 contentFrame.Navigate(pageType);
@@ -115,7 +135,7 @@ public sealed partial class NavigationViewPage : Page
 
             var selectedItem = (Category)args.SelectedItem;
             string selectedItemTag = selectedItem.Name;
-            sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+            sender.Header = LocalizationHelper.Translate($"Sample Page {selectedItemTag.Substring(selectedItemTag.Length - 1)}");
             string pageName = "WinUIGallery.SamplePages." + "SamplePage1";
             SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame4.Navigate(pageType);
@@ -133,7 +153,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string selectedItemTag = ((string)selectedItem.Tag);
-            sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+            sender.Header = LocalizationHelper.Translate($"Sample Page {selectedItemTag.Substring(selectedItemTag.Length - 1)}");
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
             SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame5.Navigate(pageType);
@@ -187,7 +207,7 @@ public sealed partial class NavigationViewPage : Page
         {
             var selectedItem = (Microsoft.UI.Xaml.Controls.NavigationViewItem)args.SelectedItem;
             string selectedItemTag = ((string)selectedItem.Tag);
-            sender.Header = "Sample Page " + selectedItemTag.Substring(selectedItemTag.Length - 1);
+            sender.Header = LocalizationHelper.Translate($"Sample Page {selectedItemTag.Substring(selectedItemTag.Length - 1)}");
             string pageName = "WinUIGallery.SamplePages." + selectedItemTag;
             SamplesNavigationPageMappings.PageDictionary.TryGetValue(pageName, out Type? pageType);
             contentFrame8.Navigate(pageType);
@@ -235,7 +255,7 @@ public sealed partial class NavigationViewPage : Page
         if ((sender as CheckBox)?.IsChecked == true)
         {
             AutoSuggestBox asb = new AutoSuggestBox() { QueryIcon = new SymbolIcon(Symbol.Find) };
-            asb.SetValue(AutomationProperties.NameProperty, "search");
+            asb.SetValue(AutomationProperties.NameProperty, LocalizationHelper.Translate("search"));
             nvSample.AutoSuggestBox = asb;
 
             setASBSubstitutionString();

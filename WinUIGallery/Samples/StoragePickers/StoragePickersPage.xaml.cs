@@ -60,8 +60,8 @@ public sealed partial class StoragePickersPage : Page
             // Show the picker dialog window
             var file = await picker.PickSingleFileAsync();
             PickedSingleFileTextBlock.Text = file != null
-                ? "Picked: " + file.Path
-                : "No file selected.";
+                ? string.Format(LocalizationHelper.Translate("Picked: {0}"), file.Path)
+                : LocalizationHelper.Translate("No file selected.");
 
             //re-enable the button
             button.IsEnabled = true;
@@ -112,12 +112,12 @@ public sealed partial class StoragePickersPage : Page
                 PickedMultipleFilesTextBlock.Text = "";
                 foreach (var file in files)
                 {
-                    PickedMultipleFilesTextBlock.Text += "- Picked: " + file.Path + Environment.NewLine;
+                    PickedMultipleFilesTextBlock.Text += "- " + string.Format(LocalizationHelper.Translate("Picked: {0}"), file.Path) + Environment.NewLine;
                 }
             }
             else
             {
-                PickedMultipleFilesTextBlock.Text = "No files selected.";
+                PickedMultipleFilesTextBlock.Text = LocalizationHelper.Translate("No files selected.");
             }
 
             // Re-enable the button
@@ -147,13 +147,13 @@ public sealed partial class StoragePickersPage : Page
             var picker = new FileSavePicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
             if (TxtCheckBox.IsChecked == true)
-                picker.FileTypeChoices.Add("Text Files", new List<string>() { ".txt" });
+                picker.FileTypeChoices.Add(LocalizationHelper.Translate("Text Files"), new List<string>() { ".txt" });
 
             if (JsonCheckBox.IsChecked == true)
-                picker.FileTypeChoices.Add("JSON Files", new List<string>() { ".json" });
+                picker.FileTypeChoices.Add(LocalizationHelper.Translate("JSON Files"), new List<string>() { ".json" });
 
             if (XmlCheckBox.IsChecked == true)
-                picker.FileTypeChoices.Add("XML Files", new List<string>() { ".xml" });
+                picker.FileTypeChoices.Add(LocalizationHelper.Translate("XML Files"), new List<string>() { ".xml" });
 
             picker.DefaultFileExtension = DefaultExtensionComboBox.SelectedItem.ToString();
 
@@ -171,11 +171,11 @@ public sealed partial class StoragePickersPage : Page
             {
                 string savePath = result.Path;
                 await File.WriteAllTextAsync(savePath, FileContentTextBox.Text);
-                SavedFileTextBlock.Text = "File saved to: " + savePath;
+                SavedFileTextBlock.Text = string.Format(LocalizationHelper.Translate("File saved to: {0}"), savePath);
             }
             else
             {
-                SavedFileTextBlock.Text = "File save canceled.";
+                SavedFileTextBlock.Text = LocalizationHelper.Translate("File save canceled.");
             }
 
             button.IsEnabled = true;
@@ -218,8 +218,8 @@ public sealed partial class StoragePickersPage : Page
             // Show the picker dialog
             var folder = await picker.PickSingleFolderAsync();
             PickedFolderTextBlock.Text = folder != null
-                ? "Picked: " + folder.Path
-                : "No folder selected.";
+                ? string.Format(LocalizationHelper.Translate("Picked: {0}"), folder.Path)
+                : LocalizationHelper.Translate("No folder selected.");
 
             // re-enable the button
             button.IsEnabled = true;
@@ -240,7 +240,7 @@ public sealed partial class StoragePickersPage : Page
             var pickResult = await picker.PickSingleFileAsync();
             if (pickResult == null)
             {
-                ThumbnailDetailsTextBlock.Text = "No file selected.";
+                ThumbnailDetailsTextBlock.Text = LocalizationHelper.Translate("No file selected.");
                 ThumbnailImage.Source = null;
                 button.IsEnabled = true;
 
@@ -266,25 +266,20 @@ public sealed partial class StoragePickersPage : Page
                     await bitmap.SetSourceAsync(thumbnail);
                     ThumbnailImage.Source = bitmap;
 
-                    ThumbnailDetailsTextBlock.Text =
-                        $"File: {file.Name}\n" +
-                        $"Mode: ThumbnailMode.{thumbnailMode}\n" +
-                        $"Requested size: {size}\n" +
-                        $"Returned size: {thumbnail.OriginalWidth} x {thumbnail.OriginalHeight}";
+                    ThumbnailDetailsTextBlock.Text = string.Format(LocalizationHelper.Translate("File: {0}\nMode: ThumbnailMode.{1}\nRequested size: {2}\nReturned size: {3} x {4}"),
+                        file.Name, thumbnailMode, size, thumbnail.OriginalWidth, thumbnail.OriginalHeight);
                 }
                 else
                 {
                     ThumbnailImage.Source = null;
-                    ThumbnailDetailsTextBlock.Text = "No thumbnail available for the selected file.";
+                    ThumbnailDetailsTextBlock.Text = LocalizationHelper.Translate("No thumbnail available for the selected file.");
                 }
             }
             catch (Exception ex)
             {
                 ThumbnailImage.Source = null;
-                ThumbnailDetailsTextBlock.Text =
-                    $"Could not retrieve a thumbnail for \"{file.Name}\" using ThumbnailMode.{thumbnailMode}.\n" +
-                    $"Try a different mode (for example, SingleItem) or a different file.\n" +
-                    $"({ex.HResult:X8})";
+                ThumbnailDetailsTextBlock.Text = string.Format(LocalizationHelper.Translate("Could not retrieve a thumbnail for \"{0}\" using ThumbnailMode.{1}.\nTry a different mode (for example, SingleItem) or a different file.\n({2})"),
+                    file.Name, thumbnailMode, ex.HResult.ToString("X8"));
             }
 
             button.IsEnabled = true;
@@ -301,7 +296,7 @@ public sealed partial class StoragePickersPage : Page
 
             var picker = new FolderPicker(button.XamlRoot.ContentIslandEnvironment.AppWindowId);
 
-            picker.CommitButtonText = "Select folder";
+            picker.CommitButtonText = LocalizationHelper.Translate("Select folder");
 
             var folder = await picker.PickSingleFolderAsync();
 
@@ -316,7 +311,7 @@ public sealed partial class StoragePickersPage : Page
                 button,
                 folder != null && !string.IsNullOrEmpty(folder.Path)
                     ? "Folder selected: " + SuggestedFolderTextBox.Text
-                    : "No folder selected",
+                    : LocalizationHelper.Translate("No folder selected."),
                 "SuggestedFolderNotificationId");
         }
     }

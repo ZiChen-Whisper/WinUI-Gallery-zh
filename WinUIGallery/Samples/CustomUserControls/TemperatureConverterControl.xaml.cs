@@ -3,6 +3,8 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.Samples.ControlPages.Fundamentals.Controls;
 
@@ -28,11 +30,12 @@ public sealed partial class TemperatureConverterControl : UserControl
         if (isNumber)
         {
             double fahrenheit = (celsius * 9 / 5) + 32;
-            ResultTextBlock.Text = "Fahrenheit: " + fahrenheit.ToString("F2") + "°F";
+            ResultTextBlock.Text = LocalizationHelper.Translate("Fahrenheit: {0}°F")
+                .Replace("{0}", fahrenheit.ToString("F2"), StringComparison.Ordinal);
         }
         else
         {
-            ResultTextBlock.Text = "Invalid input!";
+            ResultTextBlock.Text = LocalizationHelper.Translate("Invalid input!");
         }
     }
 }

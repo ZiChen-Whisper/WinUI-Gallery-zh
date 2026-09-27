@@ -67,13 +67,13 @@ public sealed partial class PageHeader : UserControl
     public string GetControlSourceInfoText()
     {
         string itemTitle = string.IsNullOrWhiteSpace(Item?.Title) ? "this control" : Item.Title;
-        return $"Source code of {itemTitle} in the WinUI repository. For some controls only the XAML file is available";
+        return LocalizationHelper.Translate($"Source code of {itemTitle} in the WinUI repository. For some controls only the XAML file is available");
     }
 
     public string GetSamplePageSourceInfoText()
     {
-        string itemTitle = string.IsNullOrWhiteSpace(Item?.Title) ? "this sample page" : $"the {Item.Title} sample page";
-        return $"Source code of {itemTitle} in the WinUI Gallery repository";
+        string itemTitle = string.IsNullOrWhiteSpace(Item?.Title) ? "this" : Item.Title;
+        return LocalizationHelper.Translate($"Source code of the {itemTitle} sample page in the WinUI Gallery repository");
     }
 
     private void OnCopyLinkButtonClick(object sender, RoutedEventArgs e)
@@ -110,6 +110,7 @@ public sealed partial class PageHeader : UserControl
 
     private void UserControl_Loaded(object sender, RoutedEventArgs e)
     {
+        LocalizationHelper.Apply(this);
         if (Item == null || (string.IsNullOrEmpty(Item.ApiNamespace) && (Item.BaseClasses == null || Item.BaseClasses.Length == 0)))
         {
             APIDetailsBtn.Visibility = Visibility.Collapsed;
@@ -127,7 +128,7 @@ public sealed partial class PageHeader : UserControl
 
     private string GetFavoriteToolTip(bool? isFavorite)
     {
-        return isFavorite is true ? "Remove from favorites" : "Add to favorites";
+        return LocalizationHelper.Translate(isFavorite is true ? "Remove from favorites" : "Add to favorites");
     }
 
     private void FavoriteButton_Click(object sender, RoutedEventArgs e)

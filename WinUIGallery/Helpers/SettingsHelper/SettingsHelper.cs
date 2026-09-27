@@ -33,6 +33,12 @@ public partial class SettingsHelper : ObservableSettings
         set => Set(value);
     }
 
+    public string DisplayLanguage
+    {
+        get => GetOrCreateDefault("zh-CN");
+        set => Set(value == "en-US" ? "en-US" : "zh-CN");
+    }
+
     public List<string> RecentlyVisited
     {
         get => GetOrCreateDefault<List<string>>(new List<string>());

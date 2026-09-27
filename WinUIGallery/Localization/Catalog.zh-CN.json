@@ -1,0 +1,680 @@
+{
+  "Language": "zh-CN",
+  "Format": "标题采用“中文（English）”双语格式；没有翻译条目的字段应回退到原始英文。",
+  "Groups": {
+    "FundamentalsItem": {
+      "Title": "基础知识（Fundamentals）"
+    },
+    "DesignItem": {
+      "Title": "设计（Design）"
+    },
+    "AccessibilityItem": {
+      "Title": "无障碍（Accessibility）"
+    },
+    "MenusAndToolbars": {
+      "Title": "菜单与工具栏（Menus & toolbars）"
+    },
+    "Collections": {
+      "Title": "集合控件（Collections）"
+    },
+    "DateAndTime": {
+      "Title": "日期与时间（Date & time）"
+    },
+    "BasicInput": {
+      "Title": "基本输入（Basic input）"
+    },
+    "StatusAndInfo": {
+      "Title": "状态与信息（Status & info）"
+    },
+    "DialogsAndFlyouts": {
+      "Title": "对话框与弹出层（Dialogs & flyouts）"
+    },
+    "Scrolling": {
+      "Title": "滚动（Scrolling）"
+    },
+    "Layout": {
+      "Title": "布局（Layout）"
+    },
+    "Navigation": {
+      "Title": "导航（Navigation）"
+    },
+    "Media": {
+      "Title": "媒体（Media）"
+    },
+    "Styles": {
+      "Title": "样式（Styles）"
+    },
+    "Text": {
+      "Title": "文本（Text）"
+    },
+    "Motion": {
+      "Title": "动画（Motion）"
+    },
+    "MultipleWindows": {
+      "Title": "窗口与多窗口（Windowing）"
+    },
+    "System": {
+      "Title": "系统（System）"
+    },
+    "Shell": {
+      "Title": "Windows 外壳（Shell）"
+    }
+  },
+  "Items": {
+    "XamlResources": {
+      "Title": "资源（Resources）",
+      "Subtitle": "用于复用共享值的定义，帮助应用保持一致并便于维护。",
+      "Description": "WinUI 3 的 XAML 资源是可重复使用的对象，例如颜色、画笔和字符串。把它们集中定义在 ResourceDictionary（资源字典）中，应用各处就能引用同一份定义，后续调整也更简单。ThemeResource（主题资源）会随浅色或深色主题自动切换。"
+    },
+    "XamlStyles": {
+      "Title": "样式（Style）",
+      "Subtitle": "使用一组可复用的属性设置，统一界面元素的外观。",
+      "Description": "XAML Style（样式）把控件的一组属性值集中定义后复用于多个控件。这样可以避免逐个控件重复设置相同外观，并让应用的界面保持一致。"
+    },
+    "Binding": {
+      "Title": "数据绑定（Binding）",
+      "Subtitle": "将界面控件连接到数据，让数据变化自动反映到界面。",
+      "Description": "Binding（数据绑定）将控件属性连接到数据源，例如另一个属性、数据对象或视图模型。数据变化时，绑定可以按设置把更新同步到界面；常见模式包括 OneWay（单向）和 TwoWay（双向）。"
+    },
+    "Templates": {
+      "Title": "模板（Templates）",
+      "Subtitle": "自定义控件外观、项目布局和 XAML 中的数据呈现方式。",
+      "Description": "Template（模板）定义控件的结构与外观。它和 Style（样式）不同：样式主要设置属性值，模板则可以重新组织控件内部的视觉元素。"
+    },
+    "CustomUserControls": {
+      "Title": "自定义控件与用户控件（Custom & User Controls）",
+      "Subtitle": "创建外观和功能可复用的自定义界面组件。",
+      "Description": "UserControl（用户控件）可以把现有界面元素组合成可复用组件；Custom Control（自定义控件）则适合需要自定义模板、属性或行为的场景。示例展示如何构建并复用这些组件。"
+    },
+    "CustomXamlConditionals": {
+      "Title": "XAML 条件（XAML Conditions）",
+      "Subtitle": "在 XAML 解析时通过 IXamlCondition 定义自定义条件。",
+      "Description": "XAML 条件可根据应用状态（例如功能开关、设备能力或配置）决定是否包含某段标记。实现 IXamlCondition（Windows App SDK 2.0），并在条件 XAML 命名空间中引用它。页面加载时，XAML 解析器会计算条件结果，并在进程生命周期内缓存每组“条件与参数”的结果。"
+    },
+    "ScratchPad": {
+      "Title": "XAML 试验区（Scratch Pad）",
+      "Subtitle": "用于试写和预览简单 XAML 标记的草稿区。",
+      "Description": "在编辑框中输入 XAML 标记并加载，即可查看它的显示效果和交互行为。"
+    },
+    "Color": {
+      "Title": "颜色（Color）",
+      "Subtitle": "认识 WinUI 3 的颜色系统，并查看文本、填充、描边、背景、信号色和高对比度画笔。",
+      "Description": "本页展示 WinUI 3 提供的主题画笔及其用途。画笔可以在应用中作为控件的前景色、填充色或背景色使用；切换上方标签可查看不同颜色类别。示例也会显示画笔资源名称，方便在 XAML 中通过 ThemeResource 引用。"
+    },
+    "Geometry": {
+      "Title": "几何图形（Geometry）",
+      "Subtitle": "通过几何形状建立清晰、一致的视觉结构。",
+      "Description": "几何设计使用点、线、角度和形状组织界面。本页展示 WinUI 3 设计规范中的常见几何元素。"
+    },
+    "Iconography": {
+      "Title": "图标（Iconography）",
+      "Subtitle": "了解图标如何快速传达信息和操作含义。",
+      "Description": "图标是一种视觉语言，可帮助用户快速识别信息和操作。本页示例使用 Segoe Fluent Icons（Windows 11）和 Segoe MDL2 Assets（Windows 10）中的图标。"
+    },
+    "Spacing": {
+      "Title": "间距（Spacing）",
+      "Subtitle": "使用恰当的间距提升可读性，并让界面更有节奏。",
+      "Description": "间距规范为控件和内容之间提供一致的留白，帮助用户分辨内容分组、阅读层次和操作关系。"
+    },
+    "Typography": {
+      "Title": "排版与字体（Typography）",
+      "Subtitle": "通过字体和层级引导用户关注重要内容。",
+      "Description": "排版规范说明如何搭配字体、字号、字重和行距，让界面文字清晰易读，并建立稳定的信息层级。"
+    },
+    "AccessibilityColorContrast": {
+      "Title": "颜色对比度（Color Contrast）",
+      "Subtitle": "检查颜色对比度，帮助更多用户看清界面内容。",
+      "Description": "颜色与背景之间需要有足够的对比度。本页介绍高对比度设计和相关示例，帮助验证文字及界面元素在不同显示条件下是否清晰可辨。"
+    },
+    "AccessibilityKeyboard": {
+      "Title": "键盘导航（Keyboard Navigation）",
+      "Subtitle": "让用户能够通过键盘顺畅地浏览和操作界面。",
+      "Description": "键盘导航示例展示焦点如何在控件之间移动，以及应用如何提供清晰的焦点指示，让无法使用鼠标的用户也能完成操作。"
+    },
+    "AccessibilityScreenReader": {
+      "Title": "屏幕阅读器（Screen Reader）",
+      "Subtitle": "为辅助技术提供有意义的控件名称、角色和状态。",
+      "Description": "屏幕阅读器会读取控件的名称、角色和状态。本页演示如何让界面内容具备有意义的无障碍信息，方便使用辅助技术的用户理解和操作。"
+    },
+    "AppBarButton": {
+      "Title": "应用栏按钮（AppBarButton）",
+      "Subtitle": "适用于 CommandBar 的按钮样式。",
+      "Description": "AppBarButton 与普通 Button 有几处区别：默认背景透明、尺寸较小；使用 Label 和 Icon 属性设置内容，而不是 Content（Content 会被忽略）；IsCompact 属性用于控制按钮尺寸。"
+    },
+    "AppBarSeparator": {
+      "Title": "应用栏分隔线（AppBarSeparator）",
+      "Subtitle": "在应用栏中用竖线区分不同的命令组。",
+      "Description": "AppBarSeparator 会绘制一条竖线，帮助用户区分应用栏中的命令组。它也有紧凑状态，减少内边距，以匹配 AppBarButton 和 AppBarToggleButton 的紧凑布局。"
+    },
+    "AppBarToggleButton": {
+      "Title": "应用栏切换按钮（AppBarToggleButton）",
+      "Subtitle": "可切换开关状态、适用于应用栏的按钮，行为类似 CheckBox。",
+      "Description": "AppBarToggleButton 外观类似 AppBarButton，交互方式则类似 CheckBox。通常有已选中（开）和未选中（关）两种状态；将 IsThreeState 设为 true 后还可进入不确定状态。可通过 IsChecked 属性读取状态。"
+    },
+    "CommandBar": {
+      "Title": "命令栏（CommandBar）",
+      "Subtitle": "用于呈现应用命令，并能自动安排布局和适应窗口尺寸的工具栏。",
+      "Description": "CommandBar 让用户可以快速访问应用中常用的操作，可承载应用级或页面级命令，并配合不同的导航方式使用。默认情况下，它显示一排图标按钮，并可选显示代表“更多”的省略号按钮。"
+    },
+    "CommandBarFlyout": {
+      "Title": "命令栏弹出层（CommandBarFlyout）",
+      "Subtitle": "显示常用快捷命令，并可附带命令菜单的小型工具栏。",
+      "Description": "CommandBarFlyout 会显示一组可直接使用的快捷命令，也可以按需提供包含其他命令的次级菜单。"
+    },
+    "MenuBar": {
+      "Title": "菜单栏（MenuBar）",
+      "Subtitle": "经典菜单栏，可显示包含 MenuFlyoutItem 的菜单项。",
+      "Description": "MenuBar 可在应用或窗口顶部提供一组菜单，便于快速搭建常见桌面应用的菜单栏。"
+    },
+    "MenuFlyout": {
+      "Title": "菜单弹出层（MenuFlyout）",
+      "Subtitle": "显示与当前上下文相关的命令或选项列表。",
+      "Description": "MenuFlyout 会显示轻量菜单；用户点击或轻触菜单外部时，菜单会自动关闭。适合让用户从与当前内容相关的简单命令或选项中进行选择。"
+    },
+    "SwipeControl": {
+      "Title": "滑动操作（SwipeControl）",
+      "Subtitle": "通过触摸滑动手势快速显示项目的菜单操作。",
+      "Description": "用户可以在列表或其他项目上滑动，快速显示关联的命令，例如删除或标记。"
+    },
+    "StandardUICommand": {
+      "Title": "标准界面命令（StandardUICommand）",
+      "Subtitle": "表示常用操作（例如 Save）的内置 XamlUICommand。",
+      "Description": "StandardUICommand 是一组内置的 XamlUICommand，用于表示 Save、Open、Copy、Paste 等常用操作。它们包含可复用的命令外观与行为，也能被标准 XAML 控件原生识别。"
+    },
+    "XamlUICommand": {
+      "Title": "XAML 界面命令（XamlUICommand）",
+      "Subtitle": "用于定义命令外观和行为的对象。",
+      "Description": "XamlUICommand 用于描述命令的外观与行为，可在应用的不同位置复用，也能被标准 XAML 控件识别。"
+    },
+    "FlipView": {
+      "Title": "翻页视图（FlipView）",
+      "Subtitle": "一次展示一个项目，供用户逐项翻阅集合内容。",
+      "Description": "FlipView 允许用户一次查看一个项目，并在集合中前后翻阅。它适合展示图库图片、杂志页面等需要逐项浏览的内容。"
+    },
+    "GridView": {
+      "Title": "网格视图（GridView）",
+      "Subtitle": "按行和列展示一组项目。",
+      "Description": "GridView（网格视图）将项目排列成网格，并支持滚动浏览。它适合展示图片、卡片或其他需要同时呈现多个项目的内容。"
+    },
+    "ItemsRepeater": {
+      "Title": "项目重复器（ItemsRepeater）",
+      "Subtitle": "面向数据驱动布局的灵活基础控件。",
+      "Description": "ItemsRepeater 类似于基于标记的循环，可根据数据创建界面元素，并支持虚拟化，从而避免一次性创建屏幕外的所有项目。"
+    },
+    "ItemsView": {
+      "Title": "项目视图（ItemsView）",
+      "Subtitle": "使用不同布局呈现项目集合的控件。",
+      "Description": "ItemsView 可通过可滚动、可切换的布局展示一组项目，适合需要在集合视图之间切换的场景。"
+    },
+    "ListView": {
+      "Title": "列表视图（ListView）",
+      "Subtitle": "以垂直列表形式呈现项目集合的控件。",
+      "Description": "ListView 将一组项目排列成可垂直滚动的列表，适合展示行数较多的数据。"
+    },
+    "PullToRefresh": {
+      "Title": "下拉刷新（PullToRefresh）",
+      "Subtitle": "允许用户下拉列表或网格，以刷新其中的内容。",
+      "Description": "用户可通过触摸下拉列表中的数据来请求刷新或加载更多内容。PullToRefresh 常见于支持触摸操作的设备。"
+    },
+    "TreeView": {
+      "Title": "树状视图（TreeView）",
+      "Subtitle": "通过可展开和折叠的节点呈现层级项目列表。",
+      "Description": "TreeView 用树状层级展示嵌套项目。用户可以展开或折叠节点，逐层浏览数据结构。"
+    },
+    "CalendarDatePicker": {
+      "Title": "日历日期选择器（CalendarDatePicker）",
+      "Subtitle": "通过日历选择日期的控件。",
+      "Description": "CalendarDatePicker 让用户通过日历界面选择日期值。"
+    },
+    "CalendarView": {
+      "Title": "日历视图（CalendarView）",
+      "Subtitle": "显示日历，供用户查看并选择日期。",
+      "Description": "CalendarView 提供较大的日历视图，便于查看和选择日期。DatePicker 则以紧凑形式呈现，并支持在控件中直接选择日期。"
+    },
+    "DatePicker": {
+      "Title": "日期选择器（DatePicker）",
+      "Subtitle": "选择一个日期。",
+      "Description": "DatePicker（日期选择器）让用户为应用设置日期，例如预约日期。控件会以紧凑的选择界面呈现日期各部分。"
+    },
+    "TimePicker": {
+      "Title": "时间选择器（TimePicker）",
+      "Subtitle": "可配置的时间选择控件。",
+      "Description": "可使用 TimePicker 让用户设置时间，例如设置提醒时间。它通过小时、分钟和 AM/PM 三个选择部分呈现时间，适合鼠标或触摸操作，也支持多种样式和配置。"
+    },
+    "Button": {
+      "Title": "按钮（Button）",
+      "Subtitle": "响应用户操作并触发 Click（点击）事件。",
+      "Description": "Button（按钮）可通过触摸、鼠标、键盘、手写笔或其他输入方式接收操作，并通过 Click 事件通知应用执行相应操作。"
+    },
+    "DropDownButton": {
+      "Title": "下拉按钮（DropDownButton）",
+      "Subtitle": "点击后显示选项弹出菜单的按钮。",
+      "Description": "DropDownButton 会展开一个 Flyout，供用户从中选择一项。"
+    },
+    "HyperlinkButton": {
+      "Title": "超链接按钮（HyperlinkButton）",
+      "Subtitle": "外观类似超链接，可导航到 URI 或响应 Click 事件。",
+      "Description": "HyperlinkButton 显示为文本链接。用户点击后，控件可在默认浏览器中打开 NavigateUri 属性指定的页面；也可以处理 Click 事件，在应用内部执行导航等操作。"
+    },
+    "RepeatButton": {
+      "Title": "重复按钮（RepeatButton）",
+      "Subtitle": "按住期间会持续触发 Click 事件的按钮。",
+      "Description": "RepeatButton 类似普通 Button，但用户按住按钮时，Click 事件会连续触发；松开按钮后停止。"
+    },
+    "ToggleButton": {
+      "Title": "切换按钮（ToggleButton）",
+      "Subtitle": "可在两种状态间切换、行为类似 CheckBox 的按钮。",
+      "Description": "ToggleButton 外观类似 Button，行为类似 CheckBox。它通常有已选中（开）和未选中（关）两种状态；将 IsThreeState 设为 true 后还可进入不确定状态。可通过 IsChecked 属性读取当前状态。"
+    },
+    "SplitButton": {
+      "Title": "拆分按钮（SplitButton）",
+      "Subtitle": "由主按钮和次要按钮组成，点击次要部分会打开弹出菜单。",
+      "Description": "SplitButton 将主要操作与下拉选项放在同一个控件中：点击主按钮执行操作，点击另一部分则展开 Flyout，供用户选择其他操作。"
+    },
+    "ToggleSplitButton": {
+      "Title": "切换拆分按钮（ToggleSplitButton）",
+      "Subtitle": "在 SplitButton 基础上增加开关状态的按钮。",
+      "Description": "ToggleSplitButton 的主要操作区域可在开启和关闭状态之间切换，同时保留用于展开 Flyout 的次要按钮区域。"
+    },
+    "CheckBox": {
+      "Title": "复选框（CheckBox）",
+      "Subtitle": "让用户选择或清除一个选项。",
+      "Description": "CheckBox（复选框）适合让用户选择多个互不排斥的选项。若选项之间只能选一个，应使用 RadioButton（单选按钮）。"
+    },
+    "ColorPicker": {
+      "Title": "颜色选取器（ColorPicker）",
+      "Subtitle": "显示可供用户选择的颜色光谱。",
+      "Description": "ColorPicker 提供颜色光谱，用户可从中选择颜色。"
+    },
+    "ComboBox": {
+      "Title": "组合框（ComboBox）",
+      "Subtitle": "从下拉列表中选择一个项目。",
+      "Description": "ComboBox（组合框）把多个选项收纳在下拉列表中，适合节省界面空间且用户一次只选择一个选项的场景。"
+    },
+    "RadioButton": {
+      "Title": "单选按钮（RadioButton）",
+      "Subtitle": "允许用户从一组选项中选择唯一一项。",
+      "Description": "RadioButton 用于呈现彼此互斥且相关的选项，用户一次只能选择其中一项。通常将多个 RadioButton 放在 RadioButtons 控件组中。"
+    },
+    "RatingControl": {
+      "Title": "评分控件（RatingControl）",
+      "Subtitle": "使用 1 到 5 颗星进行评分。",
+      "Description": "RatingControl 允许用户通过选择 1 到 5 颗星为内容或项目评分。"
+    },
+    "Slider": {
+      "Title": "滑块（Slider）",
+      "Subtitle": "沿着轨道移动滑块，从一个范围内选择数值。",
+      "Description": "Slider（滑块）适合选择连续或有明确上下限的数值，例如音量和亮度。用户拖动 Thumb（滑块拇指）即可调整当前值。"
+    },
+    "ToggleSwitch": {
+      "Title": "切换开关（ToggleSwitch）",
+      "Subtitle": "可在两种状态之间切换的开关。",
+      "Description": "ToggleSwitch 用于呈现两个互斥选项（例如开和关），选择后会立即生效。一个开关应配有一个清晰的标签。"
+    },
+    "InfoBadge": {
+      "Title": "信息徽章（InfoBadge）",
+      "Subtitle": "以低干扰方式显示通知或提示用户关注某个区域。",
+      "Description": "InfoBadge 可在应用中以不打扰用户的方式显示通知或强调某个区域，例如提示有新内容、显示通知或标出警告。"
+    },
+    "InfoBar": {
+      "Title": "信息栏（InfoBar）",
+      "Subtitle": "在页面内呈现重要状态、消息或操作结果。",
+      "Description": "InfoBar（信息栏）用于在应用界面中显示与当前页面相关的状态消息，例如成功、警告或错误；也可以提供后续操作。"
+    },
+    "ProgressBar": {
+      "Title": "进度条（ProgressBar）",
+      "Subtitle": "显示任务进度；任务进行时仍允许用户继续与界面交互。",
+      "Description": "ProgressBar 有两种显示方式：不确定进度表示任务正在进行，但不阻止用户交互；确定进度则显示已完成的工作量，适用于总工作量已知的任务。"
+    },
+    "ProgressRing": {
+      "Title": "环形进度指示器（ProgressRing）",
+      "Subtitle": "显示任务进度；任务进行时会阻止用户与界面交互。",
+      "Description": "ProgressRing 有两种显示方式：不确定进度表示任务正在进行，并阻止用户交互；确定进度则显示已完成的工作量，适用于总工作量已知的任务。"
+    },
+    "ToolTip": {
+      "Title": "工具提示（ToolTip）",
+      "Subtitle": "在弹出窗口中显示控件的补充信息。",
+      "Description": "ToolTip 可说明界面元素的用途或提示用户接下来该做什么。用户将鼠标悬停在元素上，或按住该元素时，会看到提示信息。"
+    },
+    "ContentDialog": {
+      "Title": "内容对话框（ContentDialog）",
+      "Subtitle": "以对话框形式展示内容，并请求用户确认或选择。",
+      "Description": "ContentDialog（内容对话框）可显示重要信息、确认操作或收集简单选择。应为主要操作和取消操作提供清楚的按钮标签。"
+    },
+    "Flyout": {
+      "Title": "弹出层（Flyout）",
+      "Subtitle": "显示上下文信息，并可提供交互操作。",
+      "Description": "Flyout 用于显示轻量信息或交互界面。与对话框不同，用户点击或轻触 Flyout 外部时，它会自动关闭。它可用于收集输入、展示项目详情或请求用户确认操作。"
+    },
+    "Popup": {
+      "Title": "弹出窗口（Popup）",
+      "Subtitle": "在现有界面上方临时显示内容的 UI 元素。",
+      "Description": "Popup 可在其他界面元素上方显示临时内容，适合承载提示、通知或自定义浮动面板等轻量交互，帮助用户完成操作或注意到特定内容。"
+    },
+    "TeachingTip": {
+      "Title": "教学提示（TeachingTip）",
+      "Subtitle": "内容丰富的弹出提示，可用于引导用户和介绍功能。",
+      "Description": "XAML TeachingTip 可用非侵入式的富文本提示为用户提供引导和说明。它适合突出新功能或重要功能、讲解操作步骤，或提供与当前任务相关的背景信息。"
+    },
+    "AnnotatedScrollBar": {
+      "Title": "带标记的滚动条（AnnotatedScrollBar）",
+      "Subtitle": "为普通垂直滚动条增加标记，便于浏览大型集合。",
+      "Description": "AnnotatedScrollBar 在滚动轨道上显示可点击的标记和标签，用户可以借此快速跳转到大型集合中的不同位置。"
+    },
+    "PipsPager": {
+      "Title": "点状分页器（PipsPager）",
+      "Subtitle": "用于翻页的控件，适合无需显示页码数字的场景。",
+      "Description": "PipsPager 可在分页内容之间导航，且不依赖具体页面内容。当内容没有明确的相关性顺序，或希望用图形符号表示页数时，可以使用它。它常见于照片查看器、应用列表、轮播内容和空间有限的界面。"
+    },
+    "PagerControl": {
+      "Title": "分页控件（PagerControl）",
+      "Subtitle": "通过页码在分页集合中导航的控件。",
+      "Description": "PagerControl 提供数字页码导航，支持多种显示模式，并可配置前后翻页按钮。"
+    },
+    "ScrollView": {
+      "Title": "滚动视图（ScrollView）",
+      "Subtitle": "允许用户平移和缩放内容的容器控件。",
+      "Description": "当内容超出可视区域时，ScrollView 允许用户滚动、平移和缩放以查看内容。ItemsView 的控件模板内置了 ScrollView，可自动提供滚动功能。"
+    },
+    "ScrollViewer": {
+      "Title": "滚动查看器（ScrollViewer）",
+      "Subtitle": "允许用户平移和缩放内容的容器控件。",
+      "Description": "当内容超出可视区域时，ScrollViewer 允许用户滚动、平移和缩放以查看内容。ListView 等许多内容控件会在模板中内置 ScrollViewer，从而自动支持滚动。"
+    },
+    "SemanticZoom": {
+      "Title": "语义缩放（SemanticZoom）",
+      "Subtitle": "在集合的两种视图间缩放，帮助用户浏览大型数据集。",
+      "Description": "SemanticZoom 可用两种不同方式展示分组数据，方便用户在大规模集合中快速定位和导航。"
+    },
+    "Border": {
+      "Title": "边框（Border）",
+      "Subtitle": "在其他对象周围绘制边框、背景或两者兼有的容器控件。",
+      "Description": "Border 可在另一个对象周围绘制边框、设置背景，或同时执行这两项操作。一个 Border 只能包含一个子对象。"
+    },
+    "Canvas": {
+      "Title": "画布（Canvas）",
+      "Subtitle": "支持相对画布左上角绝对定位子元素的布局面板。",
+      "Description": "Canvas 可对控件或内容进行绝对定位。可通过 Canvas.Top 和 Canvas.Left 附加属性，设置内容相对于 Canvas 的位置。"
+    },
+    "Expander": {
+      "Title": "展开器（Expander）",
+      "Subtitle": "带有可展开标题区域的容器，展开后可显示更多内容。",
+      "Description": "Expander 包含标题和内容区域，用户可展开它以查看更多内容。适合收纳只在部分情况下才需要的信息或选项，例如补充说明或项目的其他设置。"
+    },
+    "Grid": {
+      "Title": "网格（Grid）",
+      "Subtitle": "支持按行和列排列子元素的布局面板。",
+      "Description": "Grid 用于按行和列排列控件与内容。可通过 Grid.Row 和 Grid.Column 附加属性指定元素所在的位置。"
+    },
+    "LayoutPanel": {
+      "Title": "布局面板（LayoutPanel）",
+      "Subtitle": "使用 Layout 对象测量并排列子元素的面板。",
+      "Description": "LayoutPanel 可将可复用的 Layout（包括自定义 NonVirtualizingLayout）应用于普通面板子元素。它还提供边框、圆角和内边距等属性。"
+    },
+    "RelativePanel": {
+      "Title": "相对布局面板（RelativePanel）",
+      "Subtitle": "根据元素之间的关系定义布局的面板。",
+      "Description": "RelativePanel 可根据元素彼此之间以及元素与面板之间的相对关系安排布局。"
+    },
+    "SplitView": {
+      "Title": "拆分视图（SplitView）",
+      "Subtitle": "包含两个内容区域，并支持多种侧边窗格显示模式的容器。",
+      "Description": "SplitView 可在侧边窗格中显示导航选项等内容。窗格支持 CompactOverlay、Compact、Overlay 和 Inline 等显示模式。若需要汉堡菜单导航模式，可查看 NavigationView 示例。"
+    },
+    "StackPanel": {
+      "Title": "堆叠面板（StackPanel）",
+      "Subtitle": "将子元素排列成一行或一列的布局面板。",
+      "Description": "StackPanel 可沿水平方向或垂直方向依次排列子元素。"
+    },
+    "VariableSizedWrapGrid": {
+      "Title": "可变尺寸换行网格（VariableSizedWrapGrid）",
+      "Subtitle": "支持行列布局，且子元素可跨越多行或多列的面板。",
+      "Description": "VariableSizedWrapGrid 可创建网格布局，并允许其中的内容跨越多行或多列。"
+    },
+    "WrapPanel": {
+      "Title": "换行面板（WrapPanel）",
+      "Subtitle": "按行或列排列子元素，并在空间不足时自动换行的面板。",
+      "Description": "WrapPanel 会依次排列子元素；当前行或列空间不足时，将后续元素移到下一行或列。你可以配置方向、间距、内边距，以及最后一个元素是否拉伸以填满剩余空间。"
+    },
+    "Viewbox": {
+      "Title": "缩放容器（Viewbox）",
+      "Subtitle": "按指定尺寸缩放内容的容器控件。",
+      "Description": "Viewbox 可将内容放大或缩小到指定尺寸。"
+    },
+    "BreadcrumbBar": {
+      "Title": "面包屑导航栏（BreadcrumbBar）",
+      "Subtitle": "显示用户从起点到当前位置的导航路径。",
+      "Description": "BreadcrumbBar 以横向路径展示用户到达当前位置所经过的层级。调整窗口大小时，路径节点可能会从根节点开始折叠。"
+    },
+    "NavigationView": {
+      "Title": "导航视图（NavigationView）",
+      "Subtitle": "通过可折叠导航菜单呈现应用的顶层区域。",
+      "Description": "NavigationView（导航视图）为应用提供常见的顶层导航布局。菜单可以折叠，用户选择导航项后可切换到对应内容区域。"
+    },
+    "Pivot": {
+      "Title": "枢轴视图（Pivot）",
+      "Subtitle": "以选项卡形式呈现来自不同来源的信息。",
+      "Description": "Windows 11 的设计模式不推荐使用 Pivot，建议改用 SelectorBar 和 SelectorBarItem。Pivot 可将来自不同来源的项目放在选项卡视图中展示。"
+    },
+    "SelectorBar": {
+      "Title": "选择器栏（SelectorBar）",
+      "Subtitle": "在少量信息来源之间切换，由用户选择当前显示项。",
+      "Description": "SelectorBar 允许用户从数量有限的一组数据中选择一项，并据此切换界面当前显示的内容。"
+    },
+    "TabView": {
+      "Title": "选项卡视图（TabView）",
+      "Subtitle": "通过一组选项卡显示多个文档或内容页。",
+      "Description": "TabView 为用户提供一组可切换的选项卡，适合在同一界面中打开和查看多个文档。"
+    },
+    "AnimatedVisualPlayer": {
+      "Title": "动画视觉播放器（AnimatedVisualPlayer）",
+      "Subtitle": "用于呈现和控制动态图形播放的元素。",
+      "Description": "AnimatedVisualPlayer 可呈现动态图形，并控制其播放过程。"
+    },
+    "CaptureElementPreview": {
+      "Title": "摄像头预览（Capture Element / Camera Preview）",
+      "Subtitle": "演示如何显示摄像头预览。",
+      "Description": "可将 MediaCapture 对象提供的摄像头画面交给 MediaPlayerElement 显示为实时预览。"
+    },
+    "Image": {
+      "Title": "图像（Image）",
+      "Subtitle": "用于显示图像内容的控件。",
+      "Description": "Image 控件可显示图像，并按需要缩放图像内容。"
+    },
+    "MapControl": {
+      "Title": "地图控件（MapControl）",
+      "Subtitle": "显示地球地图的符号化地图控件。",
+      "Description": "MapControl 用于显示地球地图，并以地图符号呈现地理信息。"
+    },
+    "MediaPlayerElement": {
+      "Title": "媒体播放器（MediaPlayerElement）",
+      "Subtitle": "用于显示视频和图像内容的控件。",
+      "Description": "MediaPlayerElement 可播放视频和显示图像。你可以显示播放控制按钮，也可以设置视频自动播放。"
+    },
+    "PersonPicture": {
+      "Title": "联系人头像（PersonPicture）",
+      "Subtitle": "显示人员或联系人的头像。",
+      "Description": "PersonPicture 用于呈现某个人员或联系人的图片。"
+    },
+    "Sound": {
+      "Title": "界面音效（Sound）",
+      "Subtitle": "通过代码为 XAML 控件启用 2D 和 3D 界面音效的 API。",
+      "Description": "在 Xbox 上运行的 UWP 应用默认启用界面音效；也可以配置为在其他设备上播放。还可启用 Spatial Audio（空间音频）模式，营造更具空间感的体验。"
+    },
+    "WebView2": {
+      "Title": "网页视图（WebView2）",
+      "Subtitle": "基于 Microsoft Edge（Chromium）内核、可在应用中承载 HTML 内容的控件。",
+      "Description": "WebView2 使用 Microsoft Edge（Chromium）内核，在应用界面中呈现 HTML 内容。"
+    },
+    "Acrylic": {
+      "Title": "亚克力画笔（AcrylicBrush）",
+      "Subtitle": "适用于面板背景的半透明材质。",
+      "Description": "Acrylic 是一种半透明视觉材质，适合用作面板背景。"
+    },
+    "AnimatedIcon": {
+      "Title": "动画图标（AnimatedIcon）",
+      "Subtitle": "可显示图标，并根据用户交互控制动画的元素。",
+      "Description": "AnimatedIcon 可显示带动画的图标，并在用户与控件交互时控制动画效果。"
+    },
+    "CompactSizing": {
+      "Title": "紧凑尺寸（Compact Sizing）",
+      "Subtitle": "演示如何使用 ResourceDictionary 启用紧凑尺寸。",
+      "Description": "通过在应用、页面或控件级别添加样式资源，可以创建尺寸更小、更紧凑的应用界面。"
+    },
+    "IconElement": {
+      "Title": "图标元素（IconElement）",
+      "Subtitle": "以不同图像类型作为内容的图标控件基类。",
+      "Description": "IconElement 表示一类图标控件，其内容可以使用不同类型的图像。"
+    },
+    "Line": {
+      "Title": "直线（Line）",
+      "Subtitle": "在两个点之间绘制直线。",
+      "Description": "Line 用于连接两个点并绘制一条直线。"
+    },
+    "Shape": {
+      "Title": "形状（Shape）",
+      "Subtitle": "演示如何绘制椭圆、矩形和多边形等形状。",
+      "Description": "基础形状主要用于装饰性绘制，或组合成控件中不需要单独交互的部分。"
+    },
+    "RadialGradientBrush": {
+      "Title": "径向渐变画笔（RadialGradientBrush）",
+      "Subtitle": "用于呈现径向渐变的画笔。",
+      "Description": "RadialGradientBrush 使用径向渐变填充区域：中心点定义渐变的起始位置，半径定义渐变的结束范围。"
+    },
+    "SystemBackdrops": {
+      "Title": "系统背景材质（云母 / 亚克力）（System Backdrops）",
+      "Subtitle": "为应用窗口设置 Mica、Acrylic 等系统背景材质。",
+      "Description": "系统背景材质会为窗口背景添加视觉效果。Mica 不透明，并会取样桌面壁纸；Desktop Acrylic 为半透明，可模糊显示窗口后方内容。可用类型包括 Mica、Mica Alt、Desktop Acrylic Base 和 Desktop Acrylic Thin。简单场景可使用内置的 MicaBackdrop 或 DesktopAcrylicBackdrop；需要精细定制时可使用 MicaController 或 DesktopAcrylicController。"
+    },
+    "SystemBackdropElement": {
+      "Title": "系统背景元素（SystemBackdropElement）",
+      "Subtitle": "用于承载系统背景材质的界面元素。",
+      "Description": "SystemBackdropElement 可在 UI 树的特定区域应用 Mica 和 Acrylic 等系统背景材质，使材质效果延伸到窗口背景以外，支持更灵活、更具沉浸感的设计。"
+    },
+    "ThemeShadow": {
+      "Title": "主题阴影（ThemeShadow）",
+      "Subtitle": "利用系统光照为界面元素添加感知深度的阴影。",
+      "Description": "ThemeShadow 会结合系统光照和元素深度生成阴影效果，帮助建立界面的视觉层级。"
+    },
+    "AutoSuggestBox": {
+      "Title": "自动建议框（AutoSuggestBox）",
+      "Subtitle": "用户输入时提供建议的文本控件。",
+      "Description": "AutoSuggestBox 会在用户输入文本时提供建议。文本变化后，应用会收到通知，并负责生成相关建议供控件显示。"
+    },
+    "NumberBox": {
+      "Title": "数字输入框（NumberBox）",
+      "Subtitle": "用于输入数字和计算代数表达式的文本控件。",
+      "Description": "NumberBox 可让用户在应用中输入数值或代数表达式。"
+    },
+    "PasswordBox": {
+      "Title": "密码框（PasswordBox）",
+      "Subtitle": "用于输入密码的控件。",
+      "Description": "PasswordBox 允许用户输入单行、不换行的文本。文本会由指定字符遮挡，可通过 PasswordChar 设置遮挡字符，并通过 MaxLength 限制可输入的最大字符数。"
+    },
+    "RichEditBox": {
+      "Title": "富文本编辑框（RichEditBox）",
+      "Subtitle": "支持格式文本、超链接及其他富内容的编辑控件。",
+      "Description": "RichEditBox 可用于输入和编辑包含格式文本、超链接和图片的文档。它默认支持拼写检查；将 IsReadOnly 设为 true 可使其只读。"
+    },
+    "RichTextBlock": {
+      "Title": "富文本块（RichTextBlock）",
+      "Subtitle": "显示格式文本、超链接、行内图像及其他富内容的控件。",
+      "Description": "RichTextBlock 比 TextBlock 支持更丰富的格式。你可以对文本中的字符和段落分别设置格式，例如加粗、斜体或下划线；也可以将 RichTextBlock 与 RichTextBlockOverflow 连接，构建更复杂的分页布局。"
+    },
+    "TextBlock": {
+      "Title": "文本块（TextBlock）",
+      "Subtitle": "用于显示少量文本的轻量控件。",
+      "Description": "TextBlock 是应用中显示只读文本的主要控件。通常可通过 Text 属性设置简单字符串，也可以使用多个 Run 元素显示不同格式的文本。"
+    },
+    "TextBox": {
+      "Title": "文本框（TextBox）",
+      "Subtitle": "输入一行或多行纯文本。",
+      "Description": "TextBox（文本框）用于接收简单文本输入。可以为它添加标题和占位提示，并通过属性控制是否允许多行输入。"
+    },
+    "XamlCompInterop": {
+      "Title": "XAML 与 Composition 动画互操作（Animation interop）",
+      "Subtitle": "演示 XAML 与 Composition 互操作，包括表达式和自然动画。",
+      "Description": "XAML 与 Composition 互操作可让你使用表达式、自然动画等方式为界面元素制作动画。"
+    },
+    "ConnectedAnimation": {
+      "Title": "连续动画（Connected Animation）",
+      "Subtitle": "页面导航时延续元素动画，帮助用户保持不同视图间的上下文。",
+      "Description": "Connected animations 会在页面导航期间衔接元素的动画，让用户更容易理解前后视图之间的关系，并保持浏览上下文。"
+    },
+    "EasingFunction": {
+      "Title": "缓动函数（Easing Functions）",
+      "Subtitle": "通过调整动画速度变化，让运动效果更自然。",
+      "Description": "Easing（缓动）函数用于控制对象动画速度如何变化，从而让动画呈现不同的加速或减速效果。"
+    },
+    "ImplicitTransition": {
+      "Title": "隐式过渡（Implicit Transitions）",
+      "Subtitle": "使用隐式过渡自动为属性变化添加动画。",
+      "Description": "Implicit Transitions 可在属性值发生变化时自动播放动画，无需为每次变化单独启动动画。"
+    },
+    "PageTransition": {
+      "Title": "页面过渡（Page Transitions）",
+      "Subtitle": "页面过渡动画可直观提示页面之间的关系。",
+      "Description": "Page transitions 通过页面切换时的动画效果，向用户传达页面之间的关系和导航方向。"
+    },
+    "ThemeTransition": {
+      "Title": "主题过渡（Theme Transitions）",
+      "Subtitle": "可直接应用的预设主题过渡动画。",
+      "Description": "Theme transitions 是一组预先封装、易于应用的动画效果，可用于在界面内容或主题发生变化时提供视觉反馈。"
+    },
+    "ParallaxView": {
+      "Title": "视差视图（ParallaxView）",
+      "Subtitle": "在滚动时呈现视差效果的容器控件。",
+      "Description": "ParallaxView 会在滚动过程中让前景与背景以不同速度移动，从而形成视差效果。"
+    },
+    "AppWindow": {
+      "Title": "应用窗口（AppWindow）",
+      "Subtitle": "灵活且可定制的应用窗口管理系统。",
+      "Description": "AppWindow 提供高级窗口管理能力，可自定义窗口尺寸、位置和显示方式。此示例展示了创建、显示和控制窗口的不同方法。"
+    },
+    "AppWindowTitleBar": {
+      "Title": "应用窗口标题栏（AppWindowTitleBar）",
+      "Subtitle": "用于自定义应用窗口标题栏的 API。",
+      "Description": "AppWindowTitleBar 表示 AppWindow 的标题栏，并提供细粒度定制 API，包括调整外观和系统按钮样式，以及分别控制窗口激活和未激活时的状态。"
+    },
+    "TitleBar": {
+      "Title": "标题栏（TitleBar）",
+      "Subtitle": "演示如何使用默认的 TitleBar 控件。",
+      "Description": "TitleBar 控件提供了一种简便方式，可创建带有交互内容的现代标题栏界面。"
+    },
+    "Windowing": {
+      "Title": "窗口管理（Window）",
+      "Subtitle": "创建顶层 XAML 窗口，并配置窗口客户区尺寸。",
+      "Description": "创建运行于单线程的顶层 XAML 窗口，并探索实验性的客户区尺寸设置，以及窗口最小尺寸和最大尺寸限制。"
+    },
+    "Clipboard": {
+      "Title": "剪贴板（Clipboard）",
+      "Subtitle": "通过系统剪贴板复制和粘贴文本、图像与文件。",
+      "Description": "Clipboard API 可用于复制和粘贴文本、图像及文件。你还可以配置剪贴板历史记录和跨设备漫游选项、监听内容变化，并查看可用的数据格式。"
+    },
+    "ContentIsland": {
+      "Title": "内容岛（ContentIsland）",
+      "Subtitle": "创建 ContentIsland，以便在应用中承载其他 UI 框架。",
+      "Description": "ContentIsland 可作为宿主区域，在应用中承载其他 UI 框架的内容。"
+    },
+    "StoragePickers": {
+      "Title": "文件与文件夹选择器（Storage pickers）",
+      "Subtitle": "使用现代系统选择器选择文件和文件夹。",
+      "Description": "FileOpenPicker、FileSavePicker 和 FolderPicker API 可让用户通过系统界面选择文件或文件夹，并以安全方式访问所选内容。"
+    },
+    "AppNotification": {
+      "Title": "应用通知（App notifications）",
+      "Subtitle": "发送显示在操作中心或以 Toast 弹出的通知。",
+      "Description": "应用可以发送丰富且可交互的通知，其中可包含文本、图像和操作按钮。"
+    },
+    "BadgeNotificationManager": {
+      "Title": "徽章通知（Badge notifications）",
+      "Subtitle": "在应用任务栏图标上显示数字或图标徽标。",
+      "Description": "Badge 通知会以轻量徽标的形式叠加在应用任务栏图标上，用于显示状态或提醒。"
+    },
+    "JumpList": {
+      "Title": "任务栏跳转列表（JumpList）",
+      "Subtitle": "为应用任务栏跳转列表添加自定义任务和分组。",
+      "Description": "JumpList 会显示在任务栏图标的右键菜单中。你可以添加自定义任务和分组，为用户提供常用操作或最近打开项目的快捷入口。"
+    }
+  }
+}

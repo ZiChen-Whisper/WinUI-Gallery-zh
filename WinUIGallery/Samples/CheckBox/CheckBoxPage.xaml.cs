@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using WinUIGallery.Helpers;
 
 namespace WinUIGallery.ControlPages;
 
@@ -21,27 +22,27 @@ public sealed partial class CheckBoxPage : Page
 
     private void TwoState_Checked(object sender, RoutedEventArgs e)
     {
-        TwoStateOutput.Text = "You checked the box.";
+        TwoStateOutput.Text = LocalizationHelper.Translate("You checked the box.");
     }
 
     private void TwoState_Unchecked(object sender, RoutedEventArgs e)
     {
-        TwoStateOutput.Text = "You unchecked the box.";
+        TwoStateOutput.Text = LocalizationHelper.Translate("You unchecked the box.");
     }
 
     private void ThreeState_Checked(object sender, RoutedEventArgs e)
     {
-        ThreeStateOutput.Text = "CheckBox is checked.";
+        ThreeStateOutput.Text = LocalizationHelper.Translate("CheckBox is checked.");
     }
 
     private void ThreeState_Unchecked(object sender, RoutedEventArgs e)
     {
-        ThreeStateOutput.Text = "CheckBox is unchecked.";
+        ThreeStateOutput.Text = LocalizationHelper.Translate("CheckBox is unchecked.");
     }
 
     private void ThreeState_Indeterminate(object sender, RoutedEventArgs e)
     {
-        ThreeStateOutput.Text = "CheckBox state is indeterminate.";
+        ThreeStateOutput.Text = LocalizationHelper.Translate("CheckBox state is indeterminate.");
     }
 
     #region SelectAllMethods

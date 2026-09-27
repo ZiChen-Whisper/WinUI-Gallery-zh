@@ -16,7 +16,7 @@ public sealed partial class XamlUICommandPage : Page
 
     private void CustomXamlUICommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
     {
-        XamlUICommandOutput.Text = "You fired the custom command";
+        XamlUICommandOutput.Text = LocalizationHelper.Translate("You fired the custom command");
         UIHelper.AnnounceActionForAccessibility(CustomButton, "Activated custom XAML UI Command", "CustomXamlUICommandNotificationActivityId");
     }
 }

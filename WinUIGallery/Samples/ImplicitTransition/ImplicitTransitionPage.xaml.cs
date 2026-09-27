@@ -45,7 +45,9 @@ public sealed partial class ImplicitTransitionPage : Page
         OpacityRectangle.Opacity = opacity;
         OpacityValue.Value = opacity;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(OpacityBtn, $"Rectangle opacity changed by {OpacityValue.Value} points", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(OpacityBtn,
+            LocalizationHelper.Translate($"Rectangle opacity changed by {OpacityValue.Value} points"),
+            "RectangleChangedNotificationActivityId");
     }
 
     private void RotationButton_Click(object sender, RoutedEventArgs e)
@@ -60,7 +62,9 @@ public sealed partial class ImplicitTransitionPage : Page
 
         RotationRectangle.Rotation = rotation;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(RotateBtn, $"Rectangle rotated by {RotationNumberBox.Value} degrees", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(RotateBtn,
+            LocalizationHelper.Translate($"Rectangle rotated by {RotationNumberBox.Value} degrees"),
+            "RectangleChangedNotificationActivityId");
     }
 
     private void ScaleButton_Click(object sender, RoutedEventArgs e)
@@ -88,7 +92,9 @@ public sealed partial class ImplicitTransitionPage : Page
         ScaleRectangle.Scale = new Vector3(scale);
         ScaleValue.Value = scale;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(ScaleBtn, $"Rectangle scaled by {ScaleValue.Value} points", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(ScaleBtn,
+            LocalizationHelper.Translate($"Rectangle scaled by {ScaleValue.Value} points"),
+            "RectangleChangedNotificationActivityId");
     }
 
     private void TranslateButton_Click(object sender, RoutedEventArgs e)
@@ -116,7 +122,9 @@ public sealed partial class ImplicitTransitionPage : Page
         TranslateRectangle.Translation = new Vector3(translation);
         TranslationValue.Value = translation;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(TranslateBtn, $"Rectangle translated by {TranslationValue.Value} points", "RectangleChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(TranslateBtn,
+            LocalizationHelper.Translate($"Rectangle translated by {TranslationValue.Value} points"),
+            "RectangleChangedNotificationActivityId");
     }
 
     private void NumberBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -154,13 +162,17 @@ public sealed partial class ImplicitTransitionPage : Page
         {
             BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Yellow);
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(BgColorBtn, "Rectangle color changed to Yellow", "RectangleChangedNotificationActivityId");
+            UIHelper.AnnounceActionForAccessibility(BgColorBtn,
+                LocalizationHelper.Translate("Rectangle color changed to Yellow"),
+                "RectangleChangedNotificationActivityId");
         }
         else
         {
             BrushPresenter.Background = new SolidColorBrush(Microsoft.UI.Colors.Blue);
             // announce visual change to automation
-            UIHelper.AnnounceActionForAccessibility(BgColorBtn, "Rectangle color changed to Blue", "RectangleChangedNotificationActivityId");
+            UIHelper.AnnounceActionForAccessibility(BgColorBtn,
+                LocalizationHelper.Translate("Rectangle color changed to Blue"),
+                "RectangleChangedNotificationActivityId");
         }
 
     }
@@ -178,6 +190,8 @@ public sealed partial class ImplicitTransitionPage : Page
     {
         ThemeExampleGrid.RequestedTheme = ThemeExampleGrid.RequestedTheme == ElementTheme.Dark ? ElementTheme.Light : ElementTheme.Dark;
         // announce visual change to automation
-        UIHelper.AnnounceActionForAccessibility(ChangeThemeBtn, $"UI local theme changed", "UILocalThemeChangedNotificationActivityId");
+        UIHelper.AnnounceActionForAccessibility(ChangeThemeBtn,
+            LocalizationHelper.Translate("UI local theme changed"),
+            "UILocalThemeChangedNotificationActivityId");
     }
 }

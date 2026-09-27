@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using Microsoft.Windows.AppLifecycle;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.System;
 using WinUIGallery.Helpers;
@@ -50,6 +51,7 @@ public sealed partial class SettingsPage : Page
     private void OnSettingsPageLoaded(object sender, RoutedEventArgs e)
     {
         CheckRecentAndFavoriteButtonStates();
+        languageMode.SelectedIndex = SettingsHelper.Current.DisplayLanguage == "en-US" ? 1 : 0;
         var currentTheme = ThemeHelper.RootTheme;
         switch (currentTheme)
         {
@@ -81,6 +83,38 @@ public sealed partial class SettingsPage : Page
             spatialSoundBox.IsOn = true;
     }
 
+    private async void languageMode_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if ((languageMode.SelectedItem as ComboBoxItem)?.Tag is not string selectedLanguage ||
+            selectedLanguage == SettingsHelper.Current.DisplayLanguage)
+        {
+            return;
+        }
+
+        SettingsHelper.Current.DisplayLanguage = selectedLanguage;
+        try
+        {
+            _ = AppInstance.Restart(string.Empty);
+        }
+        catch (Exception)
+        {
+            // 重启失败时保留所选语言，下次手动启动时应用该设置。
+        }
+
+        ContentDialog dialog = new()
+        {
+            XamlRoot = this.XamlRoot,
+            Style = Application.Current.Resources["DefaultContentDialogStyle"] as Style,
+            Title = "语言已保存 / Language saved",
+            Content = "应用未能自动重启。请关闭后重新打开应用。 / The app could not restart automatically. Close and reopen it.",
+            CloseButtonText = "确定 / OK",
+            DefaultButton = ContentDialogButton.Close,
+            RequestedTheme = this.ActualTheme
+        };
+        LocalizationHelper.Apply(dialog);
+        await dialog.ShowAsync();
+    }
+
     private void themeMode_SelectionChanged(object sender, RoutedEventArgs e)
     {
         if (sender is not UIElement senderUiLement ||
@@ -97,7 +131,7 @@ public sealed partial class SettingsPage : Page
         // announce visual change to automation
         UIHelper.AnnounceActionForAccessibility(
             senderUiLement,
-            $"Theme changed to {elementThemeResolved}",
+            LocalizationHelper.Translate($"Theme changed to {elementThemeResolved}"),
             "ThemeChangedNotificationActivityId");
     }
 
@@ -176,6 +210,7 @@ public sealed partial class SettingsPage : Page
             SettingsHelper.Current.UpdateFavorites(items => items.Clear());
             CheckRecentAndFavoriteButtonStates();
         };
+        LocalizationHelper.Apply(dialog);
         var result = await dialog.ShowAsync();
     }
 
@@ -197,6 +232,7 @@ public sealed partial class SettingsPage : Page
             SettingsHelper.Current.UpdateRecentlyVisited(items => items.Clear());
             CheckRecentAndFavoriteButtonStates();
         };
+        LocalizationHelper.Apply(dialog);
         var result = await dialog.ShowAsync();
     }
 }
