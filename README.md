@@ -56,6 +56,15 @@ WinUI 3 与 Windows App SDK API 的配套示例应用。
 
 原版应用可从 [Microsoft Store](https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full) 获取。
 
+<p align="center">
+  <a href="https://apps.microsoft.com/detail/9P3JFPWWDZRC?launch=true&mode=full">
+    <picture>
+      <source media="(prefers-color-scheme: light)" srcset="./.github/assets/StoreBadge-dark.png" width="220" />
+      <img src="./.github/assets/StoreBadge-light.png" width="220" alt="在 Microsoft Store 获取微软原版 WinUI 3 Gallery" />
+    </picture>
+  </a>
+</p>
+
 ### 功能
 
 - **WinUI 控件示例**：每个控件页面都会展示构成示例的标记语言和代码后台。
@@ -112,6 +121,8 @@ Gallery 使用实验版 Windows App SDK 展示即将推出的功能。请使用�
 ### 上游贡献者
 
 感谢微软 WinUI Gallery 的贡献者。查看[上游贡献者名单](https://github.com/microsoft/WinUI-Gallery/graphs/contributors)。
+
+上游 README 中的贡献者图片由 [contrib.rocks](https://contrib.rocks) 提供。
 
 ## 许可证与来源
 
